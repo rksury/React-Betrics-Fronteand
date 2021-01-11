@@ -1,11 +1,12 @@
 import React,{Component} from "react";
+import logo from '../images/logo.png'
 
 export class Step2 extends Component {
     render() {
         return (
             <div>
                 <div className="navtigation">
-                    <a> <img src="../../public/img/logo.png" alt="logo"/></a>
+                    <a> <img src={logo} alt="logo"/></a>
                 </div>
 
                 <div className="container layout">

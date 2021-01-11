@@ -1,11 +1,16 @@
 import React,{Component} from "react";
+import logo from '../images/logo.png'
+import pro1 from '../images/pro1.png'
+import pro2 from '../images/pro2.png'
+import pro3 from '../images/pro3.png'
+
 
 export class Step3 extends Component {
     render() {
         return (
             <div>
                 <div className="navtigation">
-                    <a> <img src="/public/img/logo.png" alt="logo"/></a>
+                    <a> <img src={logo} alt="logo"/></a>
                 </div>
                 <div className="container layout">
                     <h3>STEP 3/4</h3>
@@ -17,7 +22,7 @@ export class Step3 extends Component {
                             <div className="col-md-4">
                                 <div className="block">
                                     <div className="img-div">
-                                        <a> <img src="/public/img/pro1.png" alt="logo"/></a>
+                                        <a> <img src={pro1} alt="logo"/></a>
                                     </div>
                                     <div className="rate">
                                         <p><span className="star">
@@ -46,7 +51,7 @@ export class Step3 extends Component {
                             <div className="col-md-4">
                                 <div className="block">
                                     <div className="img-div">
-                                        <a> <img src="/public/img/pro2.png" alt="logo"/></a>
+                                        <a> <img src={pro2} alt="logo"/></a>
                                     </div>
                                     <div className="rate">
                                         <p><span className="star"><i className="fa fa-star"/><i className="fa fa-star"/><i
@@ -69,7 +74,7 @@ export class Step3 extends Component {
                             <div className="col-md-4">
                                 <div className="block">
                                     <div className="img-div">
-                                        <a> <img src="/public/img/pro3.png" alt="logo"/></a>
+                                        <a> <img src={pro3} alt="logo"/></a>
                                     </div>
                                     <div className="rate">
                                         <p><span className="star"><i className="fa fa-star"/><i className="fa fa-star"/><i
@@ -92,7 +97,7 @@ export class Step3 extends Component {
                             <div className="col-md-4">
                                 <div className="block">
                                     <div className="img-div">
-                                        <a> <img src="/public/img/pro1.png" alt="logo"/></a>
+                                        <a> <img src={pro1} alt="logo"/></a>
                                     </div>
                                     <div className="rate">
                                         <p><span className="star"><i className="fa fa-star"/><i className="fa fa-star"/><i
@@ -115,7 +120,7 @@ export class Step3 extends Component {
                             <div className="col-md-4">
                                 <div className="block">
                                     <div className="img-div">
-                                        <a> <img src="/public/img/pro1.png" alt="logo"/></a>
+                                        <a> <img src={pro1} alt="logo"/></a>
                                     </div>
                                     <div className="rate">
                                         <p><span className="star"><i className="fa fa-star"/><i className="fa fa-star"/><i
@@ -138,7 +143,7 @@ export class Step3 extends Component {
                             <div className="col-md-4">
                                 <div className="block">
                                     <div className="img-div">
-                                        <a> <img src="/public/img/pro1.png" alt="logo"/></a>
+                                        <a> <img src={pro1} alt="logo"/></a>
                                     </div>
                                     <div className="rate">
                                         <p><span className="star"><i className="fa fa-star"/><i className="fa fa-star"/><i

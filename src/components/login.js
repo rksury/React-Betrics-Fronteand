@@ -1,6 +1,20 @@
 import React, {Component} from "react";
+//import { compose } from 'redux';
+//import { connect } from 'react-redux';
+//import * as actions from '../actions';
+//import { reduxForm, Field } from 'redux-form';
+
+import API from '../networking/api'
+import {Home} from "./home";
+
+
+//import axios from 'axios';
+
+
 
 export class Login extends Component {
+
+    api = new API()
 
     constructor(props) {
         super(props);
@@ -9,6 +23,9 @@ export class Login extends Component {
             password: '',
 
         }
+
+        //this.onSubmit = this.onSubmit.bind(this);
+
         this.changeEmailHandler = this.changeEmailHandler.bind(this);
         this.changePasswordHandler = this.changePasswordHandler.bind(this);
         this.login = this.login.bind(this);
@@ -24,10 +41,45 @@ export class Login extends Component {
     }
 
     login(event) {
-        window.alert(this.state.email)
-        window.alert(this.state.password)
+        let data = {
+            email: this.state.email,
+            password: this.state.password,
+        }
+        this.api.LoginApi(data)
+            .then((res) => {
+                console.log(res);
 
+                if (res.status === 200) {
+                    alert(res.status)
+                    this.api.setToken(res.data.token)
+                        .then(() => {
+                            this.props.dispatch({ type: 'SET_USER', value: res.data })
+                            this.props.navigation.reset({
+                                index: 0,
+                                routes: [{ name: 'Home' }],
+                            });
+                            //this.props.navigation.reset({
+                            //    index: 0,
+                            //    routes: [{ name: 'HomeStack' }],
+                            //});
+                        })
+                        .catch((error) => {
+                            console.error(error)
+                            // eslint-disable-next-line no-undef
+
+                        })
+
+                }
+                else {
+                    console.log(res)
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+
+            })
     }
+
 
     render() {
         return (
@@ -37,9 +89,9 @@ export class Login extends Component {
                         <h1 id="sign-up-header"/><a> <img src="/public/img/logo.png" alt="logo"/></a>
                         <div id="sign-up-sub-header">Where Sports Bettors Make Better Decicions Faster</div>
                     </div>
-                    <form id="sign-up-form" onSubmit={this.login}>
+                    <div id="sign-up-form" onSubmit={this.login}>
                         <label htmlFor="email">Email address</label>
-                        <input type="email" value={this.state.email} onChange={this.changeEmailHandler} id="email"
+                        <input type="text" value={this.state.email} onChange={this.changeEmailHandler} id="email"
                                name="email"
                                placeholder="Email address"/><br/>
                         <label htmlFor="password">Password</label>
@@ -49,9 +101,9 @@ export class Login extends Component {
                         <label htmlFor="Remeber" className="check-box-text"> Remeber Me</label>
 
                         <div className="text-center">
-                            <button type={"submit"} id="create-account-button">Login</button>
+                            <button type={"submit"} onClick={this.login} id="create-account-button">Login</button>
                         </div>
-                    </form>
+                    </div>
                     <p id="terms">Not a user? <a href="#" className="">Sign Up</a><br/>
                         <a href="#">Forgot Password.</a></p>
                 </div>
@@ -59,3 +111,12 @@ export class Login extends Component {
         );
     };
 }
+
+//function mapStateToProps(state) {
+//    return { errorMessage: state.auth.errorMessage };
+//
+
+//export default compose(
+//    connect(mapStateToProps, actions),
+//    reduxForm({ form: 'signin' })
+//)(Login)
