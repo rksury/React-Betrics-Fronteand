@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import API from "../networking/api";
 import { useHistory } from "react-router-dom";
+import logo from "../images/login-logo.png";
 
 export class Register extends Component {
 
@@ -85,8 +86,8 @@ render() {
             <div>
                 <div id="sign-up-container">
                     <div id="sign-up-head-wrapper">
-                        <h1 id="sign-up-header"><a> <img src="/public/img/logo.png" alt="logo"/></a></h1>
-                        <div id="sign-up-sub-header">Where Sports Bettors Make Better Decisions Faster</div>
+                        <h1 id="sign-up-header"/><a> <img id="logo" src={logo} alt="logo"/></a>
+                        <div id="sign-up-sub-header"><h4>Create your account and start winning.</h4></div>
                     </div>
                     <div id="sign-up-form" onSubmit={this.registration}>
                         <label htmlFor="firstname">First Name</label>
@@ -107,7 +108,7 @@ render() {
                             <button type={"submit"} onClick={this.registration} id="create-account-button">Register</button>
                         </div>
                     </div>
-                    <p id="terms">Not a user? <a href="#" className="">Login</a><br/></p>
+                    <p id="terms">Already a user? <a href="#" className="footerText">Sign In</a><br/></p>
                 </div>
             </div>
         );

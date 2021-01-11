@@ -13,8 +13,8 @@ export class Step1 extends Component {
             user_level: '',
         }
 
-        this.changeUserLevelHandler = this.changeUserLevelHandler.bind(this);
-        this.step1 = this.registration.bind(this);
+        // this.changeUserLevelHandler = this.changeUserLevelHandler.bind(this);
+        // this.step1 = this.registration.bind(this);
 
     }
 
@@ -32,7 +32,7 @@ export class Step1 extends Component {
             password: this.state.password,
         }
 
-        let url ='http://127.0.0.1:8000/user/'
+        let url = 'http://192.168.29.106:8000/user/'
         this.api.ResponseApi(data, url)
             .then((res) => {
                 console.log(res);
@@ -41,8 +41,7 @@ export class Step1 extends Component {
                     console.log(res.data)
                         // this.api.setToken(res.data.token)
                         .then(() => {
-                            this.props.dispatch({ type: 'SET_USER', value: res.data })
-
+                            this.props.dispatch({type: 'SET_USER', value: res.data})
                             this.props.navigation.reset('Home');
                         })
                         .catch((error) => {
@@ -51,8 +50,7 @@ export class Step1 extends Component {
 
                         })
 
-                }
-                else {
+                } else {
                     console.log(res)
                 }
             })
@@ -62,9 +60,10 @@ export class Step1 extends Component {
             })
 
     }
+
     render() {
         return (
-            <div>
+            <div className="container-fluid " >
                 <div className="navigations">
                     <img src={logo} alt="logo"/>
 
@@ -95,7 +94,6 @@ export class Step1 extends Component {
                     </div>
                 </div>
             </div>
-
         );
     };
 }

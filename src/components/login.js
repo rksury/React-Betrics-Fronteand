@@ -1,19 +1,17 @@
-import React, {Component} from "react";
+import React from "react";
+import logo from '../images/login-logo.png'
+
 //import { compose } from 'redux';
 //import { connect } from 'react-redux';
 //import * as actions from '../actions';
 //import { reduxForm, Field } from 'redux-form';
 
 import API from '../networking/api'
-import {Home} from "./home";
-
 
 //import axios from 'axios';
 
 
-
-export class Login extends Component {
-
+export class Login extends React.Component {
     api = new API()
 
     constructor(props) {
@@ -45,7 +43,7 @@ export class Login extends Component {
             email: this.state.email,
             password: this.state.password,
         }
-        let url = 'http://127.0.0.1:8000/user/login'
+        let url = 'http://192.168.29.106:8000/user/login'
         this.api.ResponseApi(data, url)
             .then((res) => {
                 console.log(res);
@@ -54,8 +52,8 @@ export class Login extends Component {
                     alert(res.status)
                     this.api.setToken(res.data.token)
                         .then(() => {
-                            this.props.dispatch({ type: 'SET_USER', value: res.data })
-                            this.props.navigate('Step1');
+                            // this.props.dispatch({ type: 'SET_USER', value: res.data })
+                            this.props.history.push('/step1')
                         })
                         .catch((error) => {
                             console.error(error)
@@ -77,8 +75,8 @@ export class Login extends Component {
             <div>
                 <div id="sign-up-container">
                     <div id="sign-up-head-wrapper">
-                        <h1 id="sign-up-header"/><a> <img src="/public/img/logo.png" alt="logo"/></a>
-                        <div id="sign-up-sub-header">Where Sports Bettors Make Better Decicions Faster</div>
+                        <h1 id="sign-up-header"/><a> <img id="logo" src={logo} alt="logo"/></a>
+                        <div id="sign-up-sub-header"><h5>Where Sports Bettors Make Better Decisions Faster </h5></div>
                     </div>
                     <div id="sign-up-form" onSubmit={this.login}>
                         <label htmlFor="email">Email address</label>

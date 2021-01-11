@@ -8,6 +8,7 @@ import {Login} from "./login";
 import {Register} from "./Registration";
 import {RequestAccess} from "./request-access";
 import {ForgetPassword} from "./forgetpassword";
+import {Accesskey} from "./accesskey";
 
 export class Home extends Component {
     render() {
@@ -15,7 +16,7 @@ export class Home extends Component {
             <BrowserRouter>
                 <div className="container">
                     <Switch>
-                        <Route path='/' component={Step1} exact/>
+                        <Route path='/step1' component={Step1} exact/>
                         <Route path='/step2' component={Step2}/>
                         <Route path='/step3' component={Step3}/>
                         <Route path='/step4' component={Step4}/>
@@ -23,6 +24,7 @@ export class Home extends Component {
                         <Route path='/register' component={Register}/>
                         <Route path='/request-access' component={RequestAccess}/>
                         <Route path='/forget-password' component={ForgetPassword}/>
+                        <Route path='/accessKey' component={Accesskey}/>
 
                     </Switch>
                 </div>
