@@ -9,6 +9,7 @@ import {Register} from "./Registration";
 import {RequestAccess} from "./request-access";
 import {ForgetPassword} from "./forgetpassword";
 import {Accesskey} from "./accesskey";
+import {Redirect} from "react-router";
 
 export class Home extends Component {
     render() {
@@ -25,7 +26,7 @@ export class Home extends Component {
                         <Route path='/request-access' component={RequestAccess}/>
                         <Route path='/forget-password' component={ForgetPassword}/>
                         <Route path='/accessKey' component={Accesskey}/>
-
+                        <Redirect to="/login" />
                     </Switch>
                 </div>
             </BrowserRouter>
