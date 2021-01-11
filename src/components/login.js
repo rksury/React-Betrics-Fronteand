@@ -45,7 +45,8 @@ export class Login extends Component {
             email: this.state.email,
             password: this.state.password,
         }
-        this.api.LoginApi(data)
+        let url = 'http://127.0.0.1:8000/user/login'
+        this.api.ResponseApi(data, url)
             .then((res) => {
                 console.log(res);
 
@@ -58,17 +59,10 @@ export class Login extends Component {
                                 index: 0,
                                 routes: [{ name: 'Home' }],
                             });
-                            //this.props.navigation.reset({
-                            //    index: 0,
-                            //    routes: [{ name: 'HomeStack' }],
-                            //});
                         })
                         .catch((error) => {
                             console.error(error)
-                            // eslint-disable-next-line no-undef
-
                         })
-
                 }
                 else {
                     console.log(res)

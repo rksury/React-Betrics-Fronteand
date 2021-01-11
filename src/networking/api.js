@@ -11,10 +11,11 @@ export default class API {
         }
     }
 
-    async LoginApi(data) {
+    async ResponseApi(data ,url) {
+        console.log('react')
         try {
             let response = axios.post(
-                'http://127.0.0.1:8000/user/login',
+                url,
                 data
             )
                 .then((res) => {
