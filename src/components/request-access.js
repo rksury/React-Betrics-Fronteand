@@ -60,19 +60,13 @@ export class RequestAccess extends Component {
             .then((res) => {
                 console.log(res);
 
-                if (res.status === 200) {
-                    alert(res.data.get('access_code'))
+                if (res.status === 201) {
+                    console.log(res.data.get('access_code'))
                     // this.api.setToken(res.data.token)
                         .then(() => {
-                            // this.props.dispatch({ type: 'SET_USER', value: res.data })
-                            this.props.navigation.reset({
-                                index: 0,
-                                routes: [{ name: 'Home' }],
-                            });
-                            //this.props.navigation.reset({
-                            //    index: 0,
-                            //    routes: [{ name: 'HomeStack' }],
-                            //});
+                            this.props.dispatch({ type: 'SET_USER', value: res.data })
+
+                            this.props.navigation.reset('Home');
                         })
                         .catch((error) => {
                             console.error(error)

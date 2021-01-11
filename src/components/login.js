@@ -55,10 +55,7 @@ export class Login extends Component {
                     this.api.setToken(res.data.token)
                         .then(() => {
                             this.props.dispatch({ type: 'SET_USER', value: res.data })
-                            this.props.navigation.reset({
-                                index: 0,
-                                routes: [{ name: 'Home' }],
-                            });
+                            this.props.navigate('Step1');
                         })
                         .catch((error) => {
                             console.error(error)
@@ -105,12 +102,3 @@ export class Login extends Component {
         );
     };
 }
-
-//function mapStateToProps(state) {
-//    return { errorMessage: state.auth.errorMessage };
-//
-
-//export default compose(
-//    connect(mapStateToProps, actions),
-//    reduxForm({ form: 'signin' })
-//)(Login)

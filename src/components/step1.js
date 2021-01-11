@@ -1,8 +1,67 @@
 import React, {Component} from "react";
 import logo from '../images/logo.png';
+import API from "../networking/api";
 
 
 export class Step1 extends Component {
+
+    api = new API()
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            user_level: '',
+        }
+
+        this.changeUserLevelHandler = this.changeUserLevelHandler.bind(this);
+        this.step1 = this.registration.bind(this);
+
+    }
+
+
+    changeUSErHandler(event) {
+        this.setState({password: event.target.value});
+    }
+
+
+    registration(event) {
+        let data = {
+            first_name: this.state.first_name,
+            last_name: this.state.last_name,
+            email: this.state.email,
+            password: this.state.password,
+        }
+
+        let url ='http://127.0.0.1:8000/user/'
+        this.api.ResponseApi(data, url)
+            .then((res) => {
+                console.log(res);
+
+                if (res.status === 201) {
+                    console.log(res.data)
+                        // this.api.setToken(res.data.token)
+                        .then(() => {
+                            this.props.dispatch({ type: 'SET_USER', value: res.data })
+
+                            this.props.navigation.reset('Home');
+                        })
+                        .catch((error) => {
+                            console.error(error)
+                            // eslint-disable-next-line no-undef
+
+                        })
+
+                }
+                else {
+                    console.log(res)
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+
+            })
+
+    }
     render() {
         return (
             <div>
