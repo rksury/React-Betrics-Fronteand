@@ -14,26 +14,23 @@ export class Step1 extends Component {
         }
 
         this.changeUserLevelHandler = this.changeUserLevelHandler.bind(this);
-        this.step1 = this.registration.bind(this);
+        this.user_level_update = this.user_level_update.bind(this);
 
     }
 
 
-    changeUSErHandler(event) {
-        this.setState({password: event.target.value});
+    changeUserLevelHandler(event) {
+        this.setState({user_level: event.target.value});
     }
 
 
-    registration(event) {
+    user_level_update(event) {
         let data = {
-            first_name: this.state.first_name,
-            last_name: this.state.last_name,
-            email: this.state.email,
-            password: this.state.password,
+            user_level: this.state.user_level,
         }
 
-        let url ='http://127.0.0.1:8000/user/'
-        this.api.ResponseApi(data, url)
+        let url ='http://127.0.0.1:8000/user/:id'
+        this.api.PatchApi(data, url)
             .then((res) => {
                 console.log(res);
 
@@ -75,23 +72,23 @@ export class Step1 extends Component {
                     <h4>Select you bettor experience*</h4>
                     <p>This will help us setup the best environment for you</p>
 
-                    <div className="radio-btn">
+                    <div className="radio-btn" onSubmit={this.user_level_update}>
 
                         <div className="container1">Beginner
-                            <input type="radio" checked="checked" name="radio"/>
+                            <input value={this.state.user_level} onChange={this.changeUserLevelHandler} type="radio" checked="checked" name="radio"/>
                             <span className="checkmark"/>
                         </div>
                         <label className="container1">Intermediate
-                            <input type="radio" name="radio"/>
+                            <input value={this.state.user_level} onChange={this.changeUserLevelHandler} type="radio" name="radio"/>
                             <span className="checkmark"/>
                         </label>
                         <label className="container1">Advance
-                            <input type="radio" name="radio"/>
+                            <input value={this.state.user_level} onChange={this.changeUserLevelHandler} type="radio" name="radio"/>
                             <span className="checkmark"/>
                         </label>
                     </div>
                     <div className="btn-div">
-                        <button className="btn btn-next">Next</button>
+                        <button className="btn btn-next" type={"submit"} onClick={this.user_level_update}>Next</button>
                     </div>
                 </div>
             </div>

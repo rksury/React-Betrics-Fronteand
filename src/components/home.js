@@ -15,7 +15,7 @@ export class Home extends Component {
             <BrowserRouter>
                 <div className="container">
                     <Switch>
-                        <Route path='/' component={Step1} exact/>
+                        <Route path='/step1' component={Step1} exact/>
                         <Route path='/step2' component={Step2}/>
                         <Route path='/step3' component={Step3}/>
                         <Route path='/step4' component={Step4}/>
