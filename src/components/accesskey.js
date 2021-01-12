@@ -25,7 +25,7 @@ export class Accesskey extends React.Component {
                         </div>
                     </div>
                     <p id="terms">
-                        <a href="#">Back to login.</a></p>
+                        <a onClick= {()=> this.props.history.push('/login')}>Back to login.</a></p>
                 </div>
             </div>
         );

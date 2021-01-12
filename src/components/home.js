@@ -10,6 +10,7 @@ import {RequestAccess} from "./request-access";
 import {ForgetPassword} from "./forgetpassword";
 import {Accesskey} from "./accesskey";
 import {Redirect} from "react-router";
+import {AccesskeyMessage} from "./accesskeyMessage";
 
 export class Home extends Component {
     render() {
@@ -23,9 +24,10 @@ export class Home extends Component {
                         <Route path='/step4' component={Step4}/>
                         <Route path='/login' component={Login}/>
                         <Route path='/register' component={Register}/>
-                        <Route path='/request-access' component={RequestAccess}/>
+                        <Route path='/requestkey' component={RequestAccess}/>
                         <Route path='/forget-password' component={ForgetPassword}/>
-                        <Route path='/accessKey' component={Accesskey}/>
+                        <Route path='/accesskey' component={Accesskey}/>
+                        <Route path='/access-message' component={AccesskeyMessage}/>
                         <Redirect to="/login" />
                     </Switch>
                 </div>

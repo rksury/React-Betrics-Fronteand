@@ -49,7 +49,6 @@ export class Login extends React.Component {
                 console.log(res);
 
                 if (res.status === 200) {
-                    alert(res.status)
                     this.api.setToken(res.data.token)
                         .then(() => {
                             // this.props.dispatch({ type: 'SET_USER', value: res.data })
@@ -93,7 +92,7 @@ export class Login extends React.Component {
                             <button type={"submit"} onClick={this.login} id="create-account-button">Login</button>
                         </div>
                     </div>
-                    <p id="terms">Not a user?  Sign Up <a  className="">(Beta Access)</a><br/>
+                    <p id="terms">Not a user?  Sign Up <a onClick= {()=> this.props.history.push('/accesskey')} className="">(Beta Access)</a><br/>
                         <a href="#">Forgot Password.</a></p>
                 </div>
             </div>
