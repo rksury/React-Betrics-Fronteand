@@ -30,6 +30,26 @@ export default class API {
     }
 
 
+    async ResponseApi1(data, url) {
+        console.log('react')
+        try {
+            let response = axios.post(
+                url,
+                data
+            )
+                .then((res1) => {
+                    return res1
+                })
+                .catch((error) => {
+                    return error
+                })
+            return response
+        } catch (error) {
+            return error
+        }
+    }
+
+
     async PatchApi(data, url) {
         console.log('react')
         try {

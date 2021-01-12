@@ -9,7 +9,7 @@ export class RequestAccess extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            full_name: 'storage',
+            full_name: '',
             email: '',
             choice1: '',
             choice2: '',
