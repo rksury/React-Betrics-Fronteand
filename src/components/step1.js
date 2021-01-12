@@ -20,6 +20,8 @@ export class Step1 extends Component {
 
 
     changeUserLevelHandler(event) {
+        window.alert('a')
+        console.log(event.target.value)
         this.setState({user_level: event.target.value});
     }
 
@@ -29,30 +31,17 @@ export class Step1 extends Component {
             user_level: this.state.user_level,
         }
 
-        let url ='http://192.168.29.106:8000/user/:id'
+        let url = 'user/update-prefrence'
         this.api.PatchApi(data, url)
             .then((res) => {
-                console.log(res);
-
-                if (res.status === 201) {
-                    console.log(res.data)
-                        // this.api.setToken(res.data.token)
-                        .then(() => {
-                            this.props.dispatch({type: 'SET_USER', value: res.data})
-                            this.props.history.push('/step2')
-                        })
-                        .catch((error) => {
-                            console.error(error)
-                            // eslint-disable-next-line no-undef
-
-                        })
-
+                if (res.status === 200) {
+                    this.props.history.push('/step2')
                 } else {
                     console.log(res)
                 }
             })
             .catch((error) => {
-                console.log(error);
+                // console.log(error);
 
             })
 
@@ -60,7 +49,7 @@ export class Step1 extends Component {
 
     render() {
         return (
-            <div className="container-fluid " >
+            <div className="container-fluid ">
                 <div className="navigations">
                     <img src={logo} alt="logo"/>
 
@@ -74,15 +63,21 @@ export class Step1 extends Component {
                     <div className="radio-btn" onSubmit={this.user_level_update}>
 
                         <div className="container1">Beginner
-                            <input value={this.state.user_level} onChange={this.changeUserLevelHandler} type="radio" checked="checked" name="radio"/>
+                            <input value="1"
+                                   onChange={this.changeUserLevelHandler} type="radio"
+                                   checked="checked" name="radio"
+                                   defaultChecked/>
                             <span className="checkmark"/>
                         </div>
                         <label className="container1">Intermediate
-                            <input value={this.state.user_level} onChange={this.changeUserLevelHandler} type="radio" name="radio"/>
+                            <input value="1" onChange={this.changeUserLevelHandler} type="radio"
+                                   name="radio"/>
                             <span className="checkmark"/>
                         </label>
                         <label className="container1">Advance
-                            <input value={this.state.user_level} onChange={this.changeUserLevelHandler} type="radio" name="radio"/>
+                            <input value="1"
+                                   onChange={this.changeUserLevelHandler} type="radio"
+                                   name="radio"/>
                             <span className="checkmark"/>
                         </label>
                     </div>

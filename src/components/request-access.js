@@ -57,7 +57,7 @@ export class RequestAccess extends Component {
                 choice2: this.state.choice2,
                 choice3: this.state.choice3,
         }
-        let url ='http://192.168.29.106:8000/user/request-access/'
+        let url ='user/request-access/'
         this.api.ResponseApi(data, url)
             .then((res) => {
                 console.log(res.data);

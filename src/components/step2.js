@@ -1,4 +1,4 @@
-import React,{Component} from "react";
+import React, {Component} from "react";
 import logo from '../images/logo.png'
 import API from "../networking/api";
 
@@ -26,25 +26,11 @@ export class Step2 extends Component {
         let data = {
             nick_name: this.state.nick_name,
         }
-        let url = 'http://127.0.0.1:8000/user/:id'
+        let url = 'user/update-prefrence'
         this.api.PatchApi(data, url)
             .then((res) => {
-                console.log(res);
-
-                if (res.status === 201) {
-                    console.log(res.data)
-                        // this.api.setToken(res.data.token)
-                        .then(() => {
-                            this.props.dispatch({type: 'SET_USER', value: res.data})
-
-                            this.props.navigation.reset('Home');
-                        })
-                        .catch((error) => {
-                            console.error(error)
-                            // eslint-disable-next-line no-undef
-
-                        })
-
+                if (res.status === 200) {
+                    this.props.history.push('/step3')
                 } else {
                     console.log(res)
                 }
@@ -54,14 +40,15 @@ export class Step2 extends Component {
 
             })
     }
-        render() {
+
+    render() {
         return (
             <div>
                 <div className="navtigation">
                     <a> <img src={logo} alt="logo"/></a>
                 </div>
 
-                <div className="container layout" >
+                <div className="container layout">
                     <h3>STEP 2/4</h3>
                     <h4>Select you bettor Nickname*</h4>
                     <p>Select your bettor nickname to be displayed throughout Betrics</p>
@@ -69,7 +56,8 @@ export class Step2 extends Component {
                     <div className="radio-btn">
                         <div className="form-group" onSubmit={this.user_level_update}>
 
-                            <input value={this.state.nick_name} onChange={this.changeNickNameHandler} type="text" className="form-control" placeholder="Enter Nickname"/>
+                            <input value={this.state.nick_name} onChange={this.changeNickNameHandler} type="text"
+                                   className="form-control" placeholder="Enter Nickname"/>
                         </div>
                     </div>
                     <div className="btn-div">

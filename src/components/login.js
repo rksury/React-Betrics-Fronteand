@@ -43,11 +43,9 @@ export class Login extends React.Component {
             email: this.state.email,
             password: this.state.password,
         }
-        let url = 'http://192.168.29.106:8000/user/login'
+        let url = 'user/login'
         this.api.ResponseApi(data, url)
             .then((res) => {
-                console.log(res);
-
                 if (res.status === 200) {
                     this.api.setToken(res.data.token)
                         .then(() => {

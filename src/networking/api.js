@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export default class API {
-
+    baseUrl = 'http://192.168.29.106:8000/'
     async setToken(token) {
         try {
             await localStorage.setItem('token', token)
@@ -14,7 +14,7 @@ export default class API {
         console.log('react')
         try {
             let response = axios.post(
-                url,
+                this.baseUrl + url,
                 data
             )
                 .then((res) => {
@@ -34,7 +34,7 @@ export default class API {
         console.log('react')
         try {
             let response = axios.post(
-                url,
+                this.baseUrl + url,
                 data
             )
                 .then((res1) => {
@@ -51,11 +51,16 @@ export default class API {
 
 
     async PatchApi(data, url) {
-        console.log('react')
+        let token = localStorage.getItem('token')
         try {
-            let response = axios.patch(
-                url,
-                data
+            let response = axios.post(
+                this.baseUrl + url,
+                data,
+                {
+                    headers: {
+                        Authorization: 'Bearer ' + token
+                    }
+                }
             )
                 .then((res) => {
                     return res

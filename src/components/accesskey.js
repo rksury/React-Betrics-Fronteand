@@ -27,7 +27,7 @@ export class Accesskey extends React.Component {
         let data = {
             access_key: this.state.access_key,
         }
-        let url = 'http://192.168.29.106:8000/user/verify-access-key'
+        let url = 'user/verify-access-key'
         this.api.ResponseApi(data, url)
             .then((res) => {
                 console.log(res);

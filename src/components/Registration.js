@@ -49,18 +49,20 @@ export class Register extends Component {
             password: this.state.password,
         }
 
-        let url = 'http://192.168.29.106:8000/user/'
+        let url = 'user/'
         this.api.ResponseApi(data, url)
             .then((res) => {
                 if (res.status === 201) {
-                    let url = 'http://192.168.29.106:8000/user/login'
-                    this.api.ResponseApi(data, url)
-                    if (res.status === 201) {
-                        this.api.setToken(res.data.token)
-                        this.props.history.push('/step1')
-                    } else {
-                        console.log("+++++++++", res)
-                    }
+                    let url = 'user/login'
+                    this.api.ResponseApi(data, url).then((loginRes) => {
+                        if (loginRes.status === 200) {
+                            this.api.setToken(loginRes.data.access)
+                            this.props.history.push('/step1')
+                        } else {
+                            console.log("+++++++++", loginRes)
+                        }
+                    })
+
                 } else {
                     console.log(res)
                 }
@@ -97,8 +99,6 @@ export class Register extends Component {
                         <label htmlFor="password">Password</label>
                         <input value={this.state.password} onChange={this.changePasswordHandler} type="password"
                                name="password" placeholder="Password"/>
-
-
                         <div className="text-center">
                             <button type={"submit"} onClick={this.registration} id="create-account-button">Register
                             </button>
