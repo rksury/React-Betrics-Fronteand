@@ -56,9 +56,10 @@ export class Register extends Component {
                     let url = 'http://192.168.29.106:8000/user/login'
                     this.api.ResponseApi(data, url)
                     if (res.status === 201) {
+                        this.api.setToken(res.data.token)
                         this.props.history.push('/step1')
                     } else {
-                        console.log("+++++++++",res)
+                        console.log("+++++++++", res)
                     }
                 } else {
                     console.log(res)
