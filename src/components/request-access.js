@@ -11,9 +11,9 @@ export class RequestAccess extends Component {
         this.state = {
             full_name: '',
             email: '',
-            choice1: '',
-            choice2: '',
-            choice3: '',
+            bettor_experience: '',
+            reference: '',
+            community_social_experience: '',
             access_key:'',
 
         }
@@ -37,30 +37,29 @@ export class RequestAccess extends Component {
     }
 
     changeChoice1Handler(event) {
-        this.setState({choice1: event.target.value});
+        this.setState({bettor_experience: event.target.value});
     }
 
     changeChoice2Handler(event) {
-        this.setState({choice2: event.target.value});
+        this.setState({reference: event.target.value});
     }
 
     changeChoice3Handler(event) {
-        this.setState({choice3: event.target.value});
+        this.setState({community_social_experience: event.target.value});
     }
 
     request_access(event) {
             let data = {
                 full_name: this.state.full_name,
                 email: this.state.email,
-                choice1: this.state.choice1,
-                choice2: this.state.choice2,
-                choice3: this.state.choice3,
+                bettor_experience: this.state.bettor_experience,
+                reference: this.state.reference,
+                community_social_experience: this.state.community_social_experience,
         }
         let url ='user/request-access/'
         this.api.PostApi(data, url)
             .then((res) => {
-                console.log(res.data);
-
+                let err = JSON.parse(res.request.response)
                 if (res.status === 201) {
                     try {
                       localStorage.setItem('accessKey', res.data['access_key'])
@@ -69,9 +68,10 @@ export class RequestAccess extends Component {
                         console.log(error);
                     }
                 }
-                else {
-                    console.log(res)
+                else if (res.request.status === 400){
+                    this.setState({error_email: err['email'], error_full_name: err['full_name']})
                 }
+
             })
             .catch((error) => {
                 console.error(error);
@@ -92,10 +92,14 @@ export class RequestAccess extends Component {
                     <div id="sign-up-form" onSubmit={this.request_access}>
                         <label htmlFor="text">Full Name</label>
                         <input value={this.state.full_name} onChange={this.changeFullNameHandler} type="test" placeholder="Full Name"/><br/>
+                        <span style={{color: "red"}}>{this.state.error_full_name}</span><br/>
+
                         <label htmlFor="email">Email address</label>
-                        <input value={this.state.email} onChange={this.changeEmailHandler} type="email" id="email" name="email" placeholder="Email Address"/>
+                        <input value={this.state.email} onChange={this.changeEmailHandler} type="email" id="email" name="email" placeholder="Email Address"/><br/>
+                        <span style={{color: "red"}}>{this.state.error_email}</span><br/>
+
                         <label htmlFor="Experience">Bettor Experience*</label>
-                        <select className="drop-menu" value={this.state.choice1} onChange={this.changeChoice1Handler}>
+                        <select className="drop-menu" value={this.state.bettor_experience} onChange={this.changeChoice1Handler} required>
                             <option hidden selected>Select</option>
                             <option>Relax pal, I'm new to this, maybe some fantasy sports or March Madness</option>
                             <option>I get some action down every now and then</option>
@@ -103,7 +107,7 @@ export class RequestAccess extends Component {
                             <option>All I do is Win, Win, Win, no matter what</option>
                         </select>
                         <label htmlFor="Experience">How did you hear about the great and powerful betrics.io</label>
-                        <select className="drop-menu" value={this.state.choice2} onChange={this.changeChoice2Handler}>
+                        <select className="drop-menu" value={this.state.reference} onChange={this.changeChoice2Handler} required>
                             <option hidden selected>Select</option>
                             <option>Reddit</option>
                             <option>Product Hunt</option>
@@ -120,7 +124,7 @@ export class RequestAccess extends Component {
                         <label htmlFor="Experience">Are you going to join the online the betrics community for some
                             social
                             experience?</label>
-                        <select className="drop-menu" value={this.state.choice3} onChange={this.changeChoice3Handler}>
+                        <select className="drop-menu" value={this.state.community_social_experience} onChange={this.changeChoice3Handler}>
                             <option hidden selected>Select</option>
                             <option>Hell yeah!</option>
                             <option>I might dip my toe in the water</option>

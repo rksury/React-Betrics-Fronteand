@@ -65,6 +65,7 @@ export class Step1 extends Component {
                             <input value="0"
                                    onChange={this.changeUserLevelHandler} type="radio"
                                    name="radio"
+                                   defaultChecked
                                    />
                             <span className="checkmark"/>
                         </label>

@@ -64,7 +64,7 @@ export class Login extends React.Component {
                     </div>
                     <div id="sign-up-form" onSubmit={this.login}>
                         <label htmlFor="email">Email address</label>
-                        <input type="text" value={this.state.email} onChange={this.changeEmailHandler} id="email"
+                        <input type="email" value={this.state.email} onChange={this.changeEmailHandler} id="email"
                                name="email"
                                placeholder="Email address"/>
                         <span style={{color: "red"}}>{this.state.error_email}</span><br/>

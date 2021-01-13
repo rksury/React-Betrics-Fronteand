@@ -13,6 +13,7 @@ export class Register extends Component {
             password: '',
             first_name: '',
             last_name: '',
+            confirm_password: ''
         }
 
         this.changeEmailHandler = this.changeEmailHandler.bind(this);
@@ -39,6 +40,12 @@ export class Register extends Component {
         this.setState({password: event.target.value});
     }
 
+    changeConfirmPasswordHandler(event) {
+        this.setState({password: event.target.value});
+    }
+
+    //add confirm passwords as well todo
+
 
     registration(event) {
         let data = {
@@ -46,24 +53,34 @@ export class Register extends Component {
             last_name: this.state.last_name,
             email: this.state.email,
             password: this.state.password,
+            confirm_password: this.state.confirm_password
         }
 
         let url = 'user/'
         this.api.PostApi(data, url)
             .then((res) => {
+                let err = JSON.parse(res.request.response)
                 if (res.status === 201) {
                     let url = 'user/login'
                     this.api.PostApi(data, url).then((loginRes) => {
                         if (loginRes.status === 200) {
                             this.api.setToken(loginRes.data.access)
                             this.props.history.push('/step1')
-                        } else {
-                            console.log("+++++++++", loginRes)
                         }
                     })
-
-                } else {
-                    console.log(res)
+                }
+                else if (res.request.status === 401) {
+                    window.alert(err['detail'])
+                }
+                else if (res.request.status  === 400) {
+                    this.setState({error_email: err['email'],
+                        error_password: err['password'],
+                        error_first_name: err['first_name'],
+                        error_last_name: err['last_name'],
+                        error_confirm_password: err['confirm_password']});
+                }
+                else {
+                    window.alert('Invalid Credentials') //todo : error message
                 }
             })
             .catch((error) => {
@@ -85,19 +102,33 @@ export class Register extends Component {
                     <div id="sign-up-form" onSubmit={this.registration}>
                         <label htmlFor="firstname">First Name</label>
                         <input value={this.state.first_name} onChange={this.changeFirstNameHandler} type="text"
-                               id="firstname" name="name" placeholder="First Name"/><br/>
+                               id="firstname" name="name" placeholder="First Name"/>
+                        <span style={{color: "red"}}>{this.state.error_first_name}</span><br/>
+
 
                         <label htmlFor="lastname">Last Name</label>
                         <input value={this.state.last_name} onChange={this.changeLastNameHandler} type="text"
-                               id="lastname" name="name" placeholder="Last Name"/><br/>
+                               id="lastname" name="name" placeholder="Last Name"/>
+                        <span style={{color: "red"}}>{this.state.error_last_name}</span><br/>
+
 
                         <label htmlFor="email">Email address</label>
                         <input value={this.state.email} onChange={this.changeEmailHandler} type="email" id="email"
-                               name="email" placeholder="Email address"/><br/>
+                               name="email" placeholder="Email address"/>
+                        <span style={{color: "red"}}>{this.state.error_email}</span><br/>
+
 
                         <label htmlFor="password">Password</label>
                         <input value={this.state.password} onChange={this.changePasswordHandler} type="password"
                                name="password" placeholder="Password"/>
+                        <span style={{color: "red"}}>{this.state.error_password}</span><br/>
+
+
+                        <label htmlFor="confirm_password">Confirm Password</label>
+                        <input value={this.state.confirm_password}    onChange={this.changeConfirmPasswordHandler} type="password"
+                               name="confirm_password" placeholder="Password"/><br/>
+                        <span style={{color: "red"}}>{this.state.error_confirm_password}</span><br/>
+
                         <div className="text-center">
                             <button type={"submit"} onClick={this.registration} id="create-account-button">Register
                             </button>
