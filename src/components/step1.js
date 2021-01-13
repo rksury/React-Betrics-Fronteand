@@ -20,7 +20,6 @@ export class Step1 extends Component {
 
 
     changeUserLevelHandler(event) {
-        window.alert('a')
         console.log(event.target.value)
         this.setState({user_level: event.target.value});
     }
@@ -28,9 +27,9 @@ export class Step1 extends Component {
 
     user_level_update(event) {
         let data = {
-            user_level: this.state.user_level,
+            user_level: +this.state.user_level
         }
-
+        console.log(typeof (data['user_level']))
         let url = 'user/update-prefrence'
         this.api.PatchApi(data, url)
             .then((res) => {
@@ -62,20 +61,20 @@ export class Step1 extends Component {
 
                     <div className="radio-btn" onSubmit={this.user_level_update}>
 
-                        <div className="container1">Beginner
-                            <input value="1"
+                        <label className="container1">Beginner
+                            <input value="0"
                                    onChange={this.changeUserLevelHandler} type="radio"
-                                   checked="checked" name="radio"
-                                   defaultChecked/>
+                                   name="radio"
+                                   />
                             <span className="checkmark"/>
-                        </div>
+                        </label>
                         <label className="container1">Intermediate
                             <input value="1" onChange={this.changeUserLevelHandler} type="radio"
                                    name="radio"/>
                             <span className="checkmark"/>
                         </label>
                         <label className="container1">Advance
-                            <input value="1"
+                            <input value="2"
                                    onChange={this.changeUserLevelHandler} type="radio"
                                    name="radio"/>
                             <span className="checkmark"/>

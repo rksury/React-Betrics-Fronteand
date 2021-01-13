@@ -50,7 +50,6 @@ export class RequestAccess extends Component {
 
     request_access(event) {
             let data = {
-                // full_name: this.state.full_name,
                 full_name: this.state.full_name,
                 email: this.state.email,
                 choice1: this.state.choice1,
@@ -58,7 +57,7 @@ export class RequestAccess extends Component {
                 choice3: this.state.choice3,
         }
         let url ='user/request-access/'
-        this.api.ResponseApi(data, url)
+        this.api.PostApi(data, url)
             .then((res) => {
                 console.log(res.data);
 

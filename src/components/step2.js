@@ -61,7 +61,7 @@ export class Step2 extends Component {
                         </div>
                     </div>
                     <div className="btn-div">
-                        <button className="btn-pre"><i className="fa fa-arrow-left"/>Back</button>
+                        <button className="btn-pre" onClick={()=> this.props.history.push('/step1')}><i className="fa fa-arrow-left"/>Back</button>
                         <button className="btn btn-next" type={"submit"} onClick={this.user_level_update}>Next</button>
                     </div>
                 </div>

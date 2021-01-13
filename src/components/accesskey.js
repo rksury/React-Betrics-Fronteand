@@ -5,7 +5,7 @@ import API from "../networking/api";
 
 
 
-export class Accesskey extends React.Component {
+export class AccessKey extends React.Component {
 
     api =new API()
 
@@ -28,7 +28,7 @@ export class Accesskey extends React.Component {
             access_key: this.state.access_key,
         }
         let url = 'user/verify-access-key'
-        this.api.ResponseApi(data, url)
+        this.api.PostApi(data, url)
             .then((res) => {
                 console.log(res);
 

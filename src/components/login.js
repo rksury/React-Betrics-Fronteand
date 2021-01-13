@@ -1,15 +1,7 @@
 import React from "react";
 import logo from '../images/login-logo.png'
 
-//import { compose } from 'redux';
-//import { connect } from 'react-redux';
-//import * as actions from '../actions';
-//import { reduxForm, Field } from 'redux-form';
-
 import API from '../networking/api'
-
-//import axios from 'axios';
-
 
 export class Login extends React.Component {
     api = new API()
@@ -21,8 +13,6 @@ export class Login extends React.Component {
             password: '',
 
         }
-
-        //this.onSubmit = this.onSubmit.bind(this);
 
         this.changeEmailHandler = this.changeEmailHandler.bind(this);
         this.changePasswordHandler = this.changePasswordHandler.bind(this);
@@ -44,25 +34,23 @@ export class Login extends React.Component {
             password: this.state.password,
         }
         let url = 'user/login'
-        this.api.ResponseApi(data, url)
-            .then((res) => {
+        this.api.PostApi(data, url)
+            .then(res => {
+                let err = JSON.parse(res.request.response)
                 if (res.status === 200) {
                     this.api.setToken(res.data.token)
-                        .then(() => {
-                            this.props.history.push('/step1')
-                        })
-                        .catch((error) => {
-                            console.error(error)
-                        })
+                    this.props.history.push('/dashboard')
+                }else if (res.request.status === 401) {
+                        window.alert(err['detail'])
+                }else if (res.request.status  === 400) {
+                    this.setState({error_email: err['email'],error_password: err['password']});
                 }
                 else {
-                    console.log(res)
+                    window.alert('Invalid Credentials') //todo : error message
                 }
-            })
-            .catch((error) => {
-                console.log(error);
-
-            })
+            }).catch(error => {
+            window.alert('server error contact to administration') //todo : error message
+        });
     }
 
 
@@ -78,18 +66,20 @@ export class Login extends React.Component {
                         <label htmlFor="email">Email address</label>
                         <input type="text" value={this.state.email} onChange={this.changeEmailHandler} id="email"
                                name="email"
-                               placeholder="Email address"/><br/>
+                               placeholder="Email address"/>
+                        <span style={{color: "red"}}>{this.state.error_email}</span><br/>
                         <label htmlFor="password">Password</label>
                         <input type="password" value={this.state.password} name="password" placeholder="Password"
                                onChange={this.changePasswordHandler}/>
+                        <span style={{color: "red"}}>{this.state.error_password}</span><br/>
                         <input type="checkbox" name="" value="" className="check-box"/>
-                        <label htmlFor="Remeber" className="check-box-text"> Remeber Me</label>
+                        <label htmlFor="Remember" className="check-box-text">Remember Me</label>
 
                         <div className="text-center">
                             <button type={"submit"} onClick={this.login} id="create-account-button">Login</button>
                         </div>
                     </div>
-                    <p id="terms">Not a user?  Sign Up <a onClick= {()=> this.props.history.push('/accesskey')} className="">(Beta Access)</a><br/>
+                    <p id="terms">Not a user?  Sign Up <a onClick= {()=> this.props.history.push('/access-key')} className="">(Beta Access)</a><br/>
                         <a href="#">Forgot Password.</a></p>
                 </div>
             </div>

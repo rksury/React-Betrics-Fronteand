@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import API from "../networking/api";
-import {useHistory} from "react-router-dom";
 import logo from "../images/login-logo.png";
 
 export class Register extends Component {
@@ -50,11 +49,11 @@ export class Register extends Component {
         }
 
         let url = 'user/'
-        this.api.ResponseApi(data, url)
+        this.api.PostApi(data, url)
             .then((res) => {
                 if (res.status === 201) {
                     let url = 'user/login'
-                    this.api.ResponseApi(data, url).then((loginRes) => {
+                    this.api.PostApi(data, url).then((loginRes) => {
                         if (loginRes.status === 200) {
                             this.api.setToken(loginRes.data.access)
                             this.props.history.push('/step1')
