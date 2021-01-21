@@ -9,16 +9,25 @@ export class AccessKeyMessage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            accessKey:localStorage.getItem('accessKey'),
+            accessKey: localStorage.getItem('accessKey'),
+        }
+        this.verify_access = this.verify_access.bind(this)
+    }
+
+
+    verify_access(event) {
+        if (localStorage.getItem('accessKey') === null) {
+            this.props.history.push("/request-key")
         }
     }
 
     render() {
         return (
             <div>
+                {this.verify_access()}
                 <div id="sign-up-container">
                     <div id="sign-up-head-wrapper" className="logoDiv">
-                        <h1 id="sign-up-header"/>To implement this solution in redux, you’ll need to access your history. There are multiple ways of doing it, either by passing the history as a parameter to the createStore function and creating a middleware or by simply utilizing connected-react-router which exposes an action creator to modify your history directly. Simply fire this action with the correct params and you are good to go! The documentation has you more than covered on how can this be done.
+                        <h1 id="sign-up-header"/>
                         <a> <img id="logo" src={logo} alt="logo"/></a>
                         <div className="headerText">
                             <p>Thanks for signing up! We will be in touch with a confirmation email, but because we know

@@ -1,10 +1,11 @@
 import React, {Component} from "react";
 import logo from '../images/logo.png';
 import API from "../networking/api";
-
+import {VerifyLogin} from "./verifylogin";
 
 export class Step1 extends Component {
 
+    verification = new VerifyLogin()
     api = new API()
 
     constructor(props) {
@@ -30,17 +31,21 @@ export class Step1 extends Component {
             user_level: +this.state.user_level
         }
         console.log(typeof (data['user_level']))
-        let url = 'user/update-prefrence'
+        let url = 'user/update-preference'
         this.api.PatchApi(data, url)
             .then((res) => {
                 if (res.status === 200) {
                     this.props.history.push('/step2')
-                } else {
+                }
+                else if (res.request.status === 401) {
+                    this.props.history.push('/login')
+                }
+                else {
                     console.log(res)
                 }
             })
             .catch((error) => {
-                // console.log(error);
+                console.log(error);
 
             })
 
@@ -49,6 +54,7 @@ export class Step1 extends Component {
     render() {
         return (
             <div className="container-fluid ">
+                {this.verification.verify_login()}
                 <div className="navigations">
                     <img src={logo} alt="logo"/>
 

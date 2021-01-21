@@ -1,8 +1,10 @@
 import React, {Component} from "react";
 import logo from '../images/logo.png'
 import API from "../networking/api";
+import {VerifyLogin} from "./verifylogin";
 
 export class Step2 extends Component {
+    verification = new VerifyLogin()
 
     api = new API()
 
@@ -14,6 +16,8 @@ export class Step2 extends Component {
 
         this.changeNickNameHandler = this.changeNickNameHandler.bind(this);
         this.user_level_update = this.user_level_update.bind(this);
+        this.verification.verify_login =this.verification.verify_login.bind(this);
+        this.verify_login_status =this.verify_login_status.bind(this)
 
     }
 
@@ -26,7 +30,7 @@ export class Step2 extends Component {
         let data = {
             nick_name: this.state.nick_name,
         }
-        let url = 'user/update-prefrence'
+        let url = 'update-preference'
         this.api.PatchApi(data, url)
             .then((res) => {
                 if (res.status === 200) {
@@ -41,9 +45,14 @@ export class Step2 extends Component {
             })
     }
 
+    verify_login_status(event) {
+        this.verification.verify_login()
+    }
+
     render() {
         return (
             <div>
+                {this.verify_login_status()}
                 <div className="navtigation">
                     <a> <img src={logo} alt="logo"/></a>
                 </div>

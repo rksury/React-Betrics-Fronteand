@@ -1,8 +1,10 @@
 import React, {Component} from "react";
 import API from "../networking/api";
 import logo from "../images/login-logo.png";
+// import { useForm } from "react-hook-form";
 
 export class Register extends Component {
+
 
     api = new API()
 
@@ -20,6 +22,7 @@ export class Register extends Component {
         this.changeFirstNameHandler = this.changeFirstNameHandler.bind(this);
         this.changeLastNameHandler = this.changeLastNameHandler.bind(this);
         this.changePasswordHandler = this.changePasswordHandler.bind(this);
+        this.changeConfirmPasswordHandler = this.changeConfirmPasswordHandler.bind(this);
         this.registration = this.registration.bind(this);
 
     }
@@ -41,10 +44,8 @@ export class Register extends Component {
     }
 
     changeConfirmPasswordHandler(event) {
-        this.setState({password: event.target.value});
+        this.setState({confirm_password: event.target.value});
     }
-
-    //add confirm passwords as well todo
 
 
     registration(event) {
@@ -56,12 +57,12 @@ export class Register extends Component {
             confirm_password: this.state.confirm_password
         }
 
-        let url = 'user/'
+        let url = 'register'
         this.api.PostApi(data, url)
             .then((res) => {
                 let err = JSON.parse(res.request.response)
                 if (res.status === 201) {
-                    let url = 'user/login'
+                    let url = 'login'
                     this.api.PostApi(data, url).then((loginRes) => {
                         if (loginRes.status === 200) {
                             this.api.setToken(loginRes.data.access)
@@ -73,7 +74,8 @@ export class Register extends Component {
                     window.alert(err['detail'])
                 }
                 else if (res.request.status  === 400) {
-                    this.setState({error_email: err['email'],
+                    this.setState({
+                        error_email: err['email'],
                         error_password: err['password'],
                         error_first_name: err['first_name'],
                         error_last_name: err['last_name'],
@@ -134,7 +136,7 @@ export class Register extends Component {
                             </button>
                         </div>
                     </div>
-                    <p id="terms">Already a user? <a href="#" className="footerText">Sign In</a><br/></p>
+                    <p id="terms">Already a user? <a onClick={() => this.props.history.push('/login')} className="footerText">Sign In</a><br/></p>
                 </div>
             </div>
         );

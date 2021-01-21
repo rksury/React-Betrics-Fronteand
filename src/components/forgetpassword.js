@@ -17,7 +17,7 @@ export class ForgetPassword extends Component {
                         </div>
                     </form>
                     <p id="terms">Not a user? <a href="#" className="">Sign Up</a><br/>
-                        You have already acount? <a href="#" className="">Sign In</a></p>
+                        You have already account? <a href="#" className="">Sign In</a></p>
                 </div>
             </div>
         );

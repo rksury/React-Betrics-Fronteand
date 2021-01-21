@@ -56,7 +56,7 @@ export class RequestAccess extends Component {
                 reference: this.state.reference,
                 community_social_experience: this.state.community_social_experience,
         }
-        let url ='user/request-access/'
+        let url ='request-access'
         this.api.PostApi(data, url)
             .then((res) => {
                 let err = JSON.parse(res.request.response)

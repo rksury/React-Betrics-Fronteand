@@ -27,7 +27,7 @@ export class AccessKey extends React.Component {
         let data = {
             access_key: this.state.access_key,
         }
-        let url = 'user/verify-access-key'
+        let url = 'verify-access-key'
         this.api.PostApi(data, url)
             .then((res) => {
                 console.log(res);
@@ -64,9 +64,10 @@ export class AccessKey extends React.Component {
                     <div id="sign-up-form" onSubmit={this.verifyAccessKey}>
                         <label htmlFor="key">Access Key</label>
                         <input type="text"  id="key" name="key" placeholder="Enter Beta Access Key"
-                               value={this.state.access_key} onChange={this.changeVerifyKeyHandler}/><br/>
+                               value={this.state.access_key} onChange={this.changeVerifyKeyHandler}/><br/>                           <br/>
 
                         <div className="text-center">
+                            <br/>
                             <button type={"submit"} onClick={this.verifyAccessKey}  id="submitButton">Submit</button>
                         </div>
                     </div>

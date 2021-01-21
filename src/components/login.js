@@ -33,12 +33,12 @@ export class Login extends React.Component {
             email: this.state.email,
             password: this.state.password,
         }
-        let url = 'user/login'
+        let url = 'login'
         this.api.PostApi(data, url)
             .then(res => {
                 let err = JSON.parse(res.request.response)
                 if (res.status === 200) {
-                    this.api.setToken(res.data.token)
+                    this.api.setToken(res.data.access)
                     this.props.history.push('/dashboard')
                 }else if (res.request.status === 401) {
                         window.alert(err['detail'])
