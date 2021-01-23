@@ -100,7 +100,7 @@ export class Dashboard extends Component {
                      <li className="coming-soon-div">
                         <a data-toggle="pill" href="#main-content-section3">
                            <div className="both-div">
-                              <div className="img-div">
+                              <div className="img-div third-img-div">
                                  <img src="img/tab-img3.png" className="third-img"></img>
                               </div>
                               <div className="content-div">
@@ -117,13 +117,13 @@ export class Dashboard extends Component {
                
                   <div className="tab-content main-tab-content inside-tab">
                      <div id="main-content-section" className="tab-pane tab-content fade in active">
-                     
+                      
                         <ul className="nav nav-pills main-tab">
                            <li className="active matchup-tab">
                               <a data-toggle="pill" href="#matchup">Matchup</a>
                            </li>
-                           <li className="">
-                              <a data-toggle="pill" href="#news">News</a>
+                           <li className="arrow">
+                              <a data-toggle="pill" href="#news"><i className="fas fa-angle-double-left"></i></a>
                            </li>
                         </ul>
                        
@@ -135,7 +135,7 @@ export class Dashboard extends Component {
                                     <div className="img-div">
                                        <img src="img/white-icon1.png"></img>
                                     </div>
-                                    <div className="dorpdown-img1">
+                                    <div className="dorpdown-img1 ">
                                        <div className="dropdown">
                                           <button className="btn dropdown-toggle" type="button" data-toggle="dropdown"><img src="img/drop-down-img1.png"></img> Betrics Bucks 
                                           <span className="fas fa-angle-down"></span></button>
@@ -146,7 +146,7 @@ export class Dashboard extends Component {
                                           </ul>
                                        </div>
                                     </div>
-                                    <div className="dorpdown-img1">
+                                    <div className="dorpdown-img1 dorpdown-img2">
                                        <div className="dropdown">
                                           <button className="btn dropdown-toggle" type="button" data-toggle="dropdown"><img src="img/cal.png"></img> Conference Championships
                                           <span className="fas fa-angle-down"></span></button>
@@ -281,11 +281,12 @@ export class Dashboard extends Component {
                                     <div className="filter-option">
                                        <a href="#"><i className=" fas fa-sliders-h"></i></a>
                                     </div>
-                                    <div className="clearfix"></div>
-                                 </div>
-                                 <div className="right-button-div">
+                                    <div className="right-button-div">
                                     <button>RUN ENGINE</button>
                                  </div>
+                                    <div className="clearfix"></div>
+                                 </div>
+                                
                               </div>
                                  <div className="block-div by-defult" >
                                     <table>

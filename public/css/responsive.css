@@ -429,5 +429,24 @@ float: none;
 
 
 
-
+@media(min-width:1024px) and (max-width:1300px){
+	  .matchup .drop-down-div .dorpdown-img2 .dropdown button{  width: 210px;
+    padding: 16px 18px 17px 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    }
+    .matchup .drop-down-div .dorpdown-img2 .dropdown button svg {
+  
+    left: -33px;
+    top: 1px;
+}
+.inside-tab .main-tab li.matchup-tab {
+   
+    width: 58.5%;
+}
+.coming-soon-div .both-div .img-div.third-img-div{
+width: 40px;
+}
+}
 
