@@ -90,13 +90,16 @@ export class RequestAccess extends Component {
                         <div id="sign-up-sub-header"><h5>Request Access to Join the Betrics.io</h5></div>
                     </div>
                     <div id="sign-up-form" onSubmit={this.request_access}>
+                    <div className="input-div-in">
                         <label htmlFor="text">Full Name</label>
                         <input value={this.state.full_name} onChange={this.changeFullNameHandler} type="test" placeholder="Full Name"/><br/>
-                        <span style={{color: "red"}}>{this.state.error_full_name}</span><br/>
-
+                        <span >{this.state.error_full_name}</span>
+                    </div>
+                    <div className="input-div-in">
                         <label htmlFor="email">Email address</label>
                         <input value={this.state.email} onChange={this.changeEmailHandler} type="email" id="email" name="email" placeholder="Email Address"/><br/>
-                        <span style={{color: "red"}}>{this.state.error_email}</span><br/>
+                        <span >{this.state.error_email}</span>
+                    </div>
 
                         <label htmlFor="Experience">Bettor Experience*</label>
                         <select className="drop-menu" value={this.state.bettor_experience} onChange={this.changeChoice1Handler} required>

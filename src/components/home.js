@@ -19,7 +19,7 @@ export class Home extends Component {
     render() {
         return(
             <BrowserRouter>
-                <div className="container">
+                <div className="">
                     <Switch>
                         <Route path='/step1' component={Step1} exact/>
                         <Route path='/step2' component={Step2}/>

@@ -62,12 +62,13 @@ export class AccessKey extends React.Component {
                         </div>
                     </div>
                     <div id="sign-up-form" onSubmit={this.verifyAccessKey}>
+                    <div className="input-div-in"> 
                         <label htmlFor="key">Access Key</label>
                         <input type="text"  id="key" name="key" placeholder="Enter Beta Access Key"
                                value={this.state.access_key} onChange={this.changeVerifyKeyHandler}/><br/>                           <br/>
-
+                    </div>
                         <div className="text-center">
-                            <br/>
+                           
                             <button type={"submit"} onClick={this.verifyAccessKey}  id="submitButton">Submit</button>
                         </div>
                     </div>

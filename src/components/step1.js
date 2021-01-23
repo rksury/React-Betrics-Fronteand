@@ -53,9 +53,9 @@ export class Step1 extends Component {
 
     render() {
         return (
-            <div className="container-fluid ">
+            <div >
                 {this.verification.verify_login()}
-                <div className="navigations">
+                <div className="navtigation">
                     <img src={logo} alt="logo"/>
 
                 </div>

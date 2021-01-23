@@ -63,15 +63,20 @@ export class Login extends React.Component {
                         <div id="sign-up-sub-header"><h5>Where Sports Bettors Make Better Decisions Faster </h5></div>
                     </div>
                     <div id="sign-up-form" onSubmit={this.login}>
+                        <div className="input-div-in">
                         <label htmlFor="email">Email address</label>
                         <input type="email" value={this.state.email} onChange={this.changeEmailHandler} id="email"
                                name="email"
                                placeholder="Email address"/>
-                        <span style={{color: "red"}}>{this.state.error_email}</span><br/>
+                        <span >{this.state.error_email}</span>
+                        </div>
+                        
+                        <div className="input-div-in">
                         <label htmlFor="password">Password</label>
                         <input type="password" value={this.state.password} name="password" placeholder="Password"
                                onChange={this.changePasswordHandler}/>
-                        <span style={{color: "red"}}>{this.state.error_password}</span><br/>
+                        <span >{this.state.error_password}</span>
+                        </div>
                         <input type="checkbox" name="" value="" className="check-box"/>
                         <label htmlFor="Remember" className="check-box-text">Remember Me</label>
 
