@@ -33,6 +33,29 @@ export default class API {
     }
 
 
+    async GetWithParamsApi(url, params) {
+        let token = localStorage.getItem('token')
+        try {
+            let response = axios.get(
+                this.baseUrl + url,
+                {
+                    headers: {
+                        Authorization: 'Bearer ' + token
+                    },
+                    params:params
+                }
+            )
+                .then((res) => {
+                    return res
+                })
+                .catch((error) => {
+                    return error.response
+                })
+            return response
+        } catch (error) {
+            console.log(error);
+        }
+    }
     async GetApi(url) {
         let token = localStorage.getItem('token')
         try {
