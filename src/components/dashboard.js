@@ -94,7 +94,6 @@ export class Dashboard extends Component {
         return (
             <div className="container-fluid">
                 <div className="row">
-
                     <div className="col-md-3 left-sidebar collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <div className="row logo-div">
                             <img src="img/logo-img.png"></img>

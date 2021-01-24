@@ -470,7 +470,7 @@ button:focus {
 	border: none;
 	top: 0;
 	z-index: 9;
-	padding: 27px 20px 0;
+	padding: 27px 0 0;
 	position: inherit;
 }
 
@@ -502,7 +502,7 @@ button:focus {
 .content .navbar-nav li {}
 
 .main-content {
-	margin-top: 80px;
+	margin-top: 55px;
 }
 
 .main-content .left {}
@@ -828,7 +828,7 @@ button:focus {
 }
 
 .tab-content.main-tab-content {
-	padding: 50px 0 0;
+	padding: 29px 0 0;
 }
 
 .inside-tab .main-tab li a {
@@ -854,8 +854,7 @@ button:focus {
 }
 
 .inside-tab .main-tab li.matchup-tab {
-	border-right: 1px solid white;
-	width: 58.6%;
+	width: 100%;
 }
 
 .coming-soon-div {
@@ -872,16 +871,17 @@ button:focus {
 	background: rgba(148, 152, 160, 1);
 	border-radius: 5px;
 	margin-top: 36px;
-	height: 58px;
+	height: 92px;
 	max-width: 782px;
-	margin: 36px auto 85px;
+	margin: 32px auto 29px;
 }
 
 .matchup .drop-down-div .img-div {
 	float: left;
-	padding: 14px 12px;
+	padding: 28px 12px;
 	border-right: 1.62px solid rgb(122 115 115);
-	height: 58px;
+	height: 92px;
+	background: none;
 }
 
 .matchup .drop-down-div .img-div img {
@@ -902,9 +902,9 @@ button:focus {
 	outline: none;
 	color: white;
 	letter-spacing: 0.5px;
-	height: 58px;
+	height: 92px;
 	font-size: 14px;
-	padding: 17px 18px 17px 10px;
+	padding: 16px 18px 17px 10px;
 }
 .matchup .drop-down-div .dorpdown-img1 .dropdown button svg{
 	position: relative;
@@ -952,7 +952,7 @@ button:focus {
 .matchup .drop-down-div .button-div {
 	float: left;
 	text-align: center;
-	padding: 19px 0 0 6px;
+	padding: 35px 0 0 6px;
 }
 
 .matchup .drop-down-div .button-div button {
@@ -1024,9 +1024,10 @@ button:focus {
 .right-drop-down {}
 
 .right-drop-down .select-drop {
-	width: 30%;
+	width: 48%;
 	float: left;
 	margin-right: 6px;
+	margin-bottom: 10px;
 }
 
 .right-drop-down .select-drop select {
@@ -1037,7 +1038,7 @@ button:focus {
 	font-size: 12px;
 	border-radius: 16px;
 	padding: 3px 8px;
-	font-weight: 700;
+	font-weight: 500;
 }
 
 .right-drop-down .select-drop option {
@@ -1045,10 +1046,14 @@ button:focus {
 }
 
 .right-drop-down {
-    margin-bottom: 41px;
+    margin-bottom: 29px;
 }
 
-.right-drop-down .filter-option {}
+.right-drop-down .filter-option {
+    float: left;
+    position: relative;
+    top: 3px;
+}
 
 .right-drop-down .filter-option a {
 	color: white;
@@ -1064,7 +1069,9 @@ button:focus {
 
 .right-drop-down .right-button-div {
 	text-align: center;
-	margin-top: 20px;
+	margin-top: 1px;
+	margin-left: 14px;
+	float: left;
 }
 
 .right-drop-down .right-button-div button {
@@ -1290,4 +1297,14 @@ button:focus {
 	    display: block;
     margin: 5px 0 0;
     color: red
+}
+
+.matchup .drop-down-div .dorpdown-img2 .dropdown button img{width: 24px;}
+
+.inside-tab .main-tab li.arrow a{opacity: 1;font-size: 18px;padding: 6px 15px;}
+
+.inside-tab .main-tab li.arrow{position: absolute;right: -60px;width: auto;background: #01a1ff26;top: -3px;}
+.inside-tab .main-tab li.arrow a svg{
+	color: white;
+	opacity: 1;
 }
