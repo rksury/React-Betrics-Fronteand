@@ -43,11 +43,53 @@ export class Step4 extends Component {
                     <a> <img src={logo} alt="logo"/></a>
                 </div>
                 <div className="container layout">
-                    <h3>STEP 3/4</h3>
-                    <h4>Select you bettor Nickname*</h4>
-                    <p>Select your bettor nickname to be displayed throughout Betrics</p>
+                    <h3>STEP 4/4</h3>
+                    <h4>Sportsbook selection</h4>
+                    <p>Select your betrics provider to power your war room. <br/>You can add/remove this later    </p>
                     <div className="product-div" >
                         <div className="row">
+
+                        <div class="col-md-4">
+				<div class="block">
+					<div class="img-div">
+						<img src="img/pro1.png"></img>
+					</div>
+					<div class="rate">
+						<p><span class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></span><span class="price-div"><span class="price"><i class="fas fa-dollar-sign"></i>10 Months</span>/<span class="free">Free</span></span></p>
+					</div>
+					<div class="btn-divv">
+						<div class="text-div">
+							<h3>Plan Z Sports</h3>
+						<p>Projection Index</p>
+						</div>
+						<div class="sub-div">
+							<button>SUBSCRIBE</button>
+						</div>
+					</div>
+				</div>
+			</div>
+            <div class="col-md-4">
+				<div class="block">
+					<div class="img-div">
+						<img src="img/pro2.png"></img>
+					</div>
+					<div class="rate">
+						<p><span class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></span><span class="price-div"><span class="price"><i class="fas fa-dollar-sign"></i>10 Months</span>/<span class="free">Free</span></span></p>
+					</div>
+					<div class="btn-divv">
+						<div class="text-div">
+							<h3>Plan Z Sports</h3>
+						<p>Projection Index</p>
+						</div>
+						<div class="sub-div">
+							<button>SUBSCRIBE</button>
+						</div>
+					</div>
+				</div>
+			</div>
+                           
+
+
                             {this.state.data.map(book => (
                                 <div className="col-md-4">
                                     <div className="block">

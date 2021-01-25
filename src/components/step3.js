@@ -44,10 +44,30 @@ export class Step3 extends Component {
                 </div>
                 <div className="container layout">
                     <h3>STEP 3/4</h3>
-                    <h4>Select you bettor Nickname*</h4>
-                    <p>Select your bettor nickname to be displayed throughout Betrics</p>
+                    <h4>Sportsbook selection</h4>
+                    <p>Select the sportsbooks you would like  to use with Betrics. <br/> You can add/remove this later    </p>
                     <div className="product-div" >
                         <div className="row">
+                   
+            <div class="col-md-4">
+				<div class="block">
+					<div class="img-div">
+						<img src="img/pro4.png"></img>
+					</div>
+					<div class="rate">
+						<p><span class="star"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></span></p>
+					</div>
+					<div class="btn-divv">
+						<div class="text-div">
+							<h3>Grays Sports Almanac</h3>
+						<p>Almanac from the Future</p>
+						</div>
+						<div class="sub-div">
+							<button>Add Book</button>
+						</div>
+					</div>
+				</div>
+			</div>
                             {this.state.data.map(book => (
                                 <div className="col-md-4">
                                     <div className="block">
@@ -75,7 +95,7 @@ export class Step3 extends Component {
                                                 <p>{book.published_by}</p>
                                             </div>
                                             <div className="sub-div">
-                                                <button>SUBSCRIBE</button>
+                                                <button>Add Book</button>
                                             </div>
                                         </div>
                                     </div>
