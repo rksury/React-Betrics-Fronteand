@@ -77,7 +77,6 @@ export class Dashboard extends Component {
             .catch((error) => {
                 console.log(error);
             })
-
     }
 
     updateWeek(sequence) {
@@ -258,9 +257,9 @@ export class Dashboard extends Component {
                                                                 </ul>
                                                             </div>
                                                         </div>
-                                                        <div className="button-div">
-                                                            <button>Bet Queue <span>2</span></button>
-                                                        </div>
+                                                        {/*<div className="button-div">*/}
+                                                        {/*    <button>Bet Queue <span>2</span></button>*/}
+                                                        {/*</div>*/}
                                                     </div>
 
                                                     {this.state.odds_data.map(odds_data => (
@@ -306,7 +305,7 @@ export class Dashboard extends Component {
                                                             <div className="time-button-div">
                                                                 <div className="row">
                                                                     <div className="col-md-6 col-sm-6  text">
-                                                                        <p><span>Jan 18, 2021 at 1:35 am</span></p>
+                                                                        <p><span>{(Date.parse(odds_data.event.scheduled))}</span></p>
                                                                     </div>
                                                                     <div className="col-md-5 col-sm-6  button-div">
                                                                         <button>WAR ROOM</button>
@@ -631,10 +630,10 @@ export class Dashboard extends Component {
                                     </div>
 
                                     <div id="main-content-section2" className="tab-pane fade">
-                                        <h3>Comming Soon</h3>
+                                        <h3>Coming Soon</h3>
                                     </div>
                                     <div id="main-content-section3" className="tab-pane fade">
-                                        <h3>Comming Soon</h3>
+                                        <h3>Coming Soon</h3>
                                     </div>
                                 </div>
                             </div>

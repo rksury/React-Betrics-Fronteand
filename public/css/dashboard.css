@@ -1303,8 +1303,12 @@ button:focus {
 
 .inside-tab .main-tab li.arrow a{opacity: 1;font-size: 18px;padding: 6px 15px;}
 
-.inside-tab .main-tab li.arrow{position: absolute;right: -60px;width: auto;background: #01a1ff26;top: -3px;}
+.inside-tab .main-tab li.arrow{position: absolute;right: -60px;width: auto;background: #01a1ff26;top: -3px;transition: .5s;}
 .inside-tab .main-tab li.arrow a svg{
 	color: white;
 	opacity: 1;
+	transition: .5s;
 }
+.inside-tab .main-tab li.arrow:hover a{padding-right: 30px;}
+
+.main-active2.inside-tab .main-tab li.arrow a svg{transform: rotate(180deg);}

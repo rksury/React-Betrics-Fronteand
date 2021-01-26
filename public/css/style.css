@@ -188,6 +188,7 @@ a {
     margin-bottom: 30px;
     border-radius: 11px;
     overflow: hidden;
+    box-shadow: 1px 2px 10px 0px rgb(93 85 85 / 75%);
 }
 
 .product-div {
@@ -199,6 +200,8 @@ a {
     position: relative;
     height: 245px;
     display: flex;
+    overflow: hidden;
+    border-radius: 0;
 }
 
 .img-div img {
@@ -234,7 +237,7 @@ a {
 }
 
 
-.rate p .star i {
+.rate p .star svg {
     padding: 0 1px;
 }
 
@@ -247,6 +250,11 @@ a {
     margin-right: 5px;
     text-decoration: line-through;
 }
+.rate .price-div .price svg{
+
+    margin-right: 5px;
+}
+
 
 .rate .price-div .free {
     margin-left: 5px;

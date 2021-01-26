@@ -221,7 +221,7 @@ content: none;
 	display: none!important;
 	transform: translateX(0);
 }
-#news.active{max-width: 485px;position: absolute;top: 60px;transition: 0.5s;right: 0;transform: translateX(0);overflow: hidden;display: block!important;}
+	.main-active2 #news.active{max-width: 485px;position: absolute;top: 60px;transition: 0.5s;right: 0;transform: translateX(0);overflow: hidden;display: block!important;}
 	.navbar-collapse.collapse.left-sidebar {
     width: 17%;
     padding: 0;

@@ -31,22 +31,6 @@ export class Register extends Component {
         this.setState({email: event.target.value});
     }
 
-    changeFirstNameHandler(event) {
-        this.setState({first_name: event.target.value});
-    }
-
-    changeLastNameHandler(event) {
-        this.setState({last_name: event.target.value});
-    }
-
-    changePasswordHandler(event) {
-        this.setState({password: event.target.value});
-    }
-
-    changeConfirmPasswordHandler(event) {
-        this.setState({confirm_password: event.target.value});
-    }
-
 
     registration(event) {
         let data = {

@@ -16,7 +16,7 @@ export class Step4 extends Component {
 
 
     componentDidMount() {
-        let url = 'book'
+        let url = 'books'
         this.api.GetApi(url)
             .then((res) => {
                 let response_data = JSON.parse(res.request.response)
@@ -43,9 +43,9 @@ export class Step4 extends Component {
                     <a> <img src={logo} alt="logo"/></a>
                 </div>
                 <div className="container layout">
-                    <h3>STEP 3/4</h3>
-                    <h4>Select you bettor Nickname*</h4>
-                    <p>Select your bettor nickname to be displayed throughout Betrics</p>
+                    <h3>STEP 4/4</h3>
+                    <h4>Sportsbook selection</h4>
+                    <p>Select your betrics provider to power your war room. <br/>You can add/remove this later    </p>
                     <div className="product-div" >
                         <div className="row">
                             {this.state.data.map(book => (
@@ -71,8 +71,8 @@ export class Step4 extends Component {
                                         </div>
                                         <div className="btn-divv">
                                             <div className="text-div">
-                                                <h3>{book.title}</h3>
-                                                <p>{book.published_by}</p>
+                                                <h3>{book.name}</h3>
+                                                <p>{book.name}</p>
                                             </div>
                                             <div className="sub-div">
                                                 <button>SUBSCRIBE</button>
