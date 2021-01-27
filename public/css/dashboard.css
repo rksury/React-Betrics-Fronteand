@@ -499,7 +499,8 @@ button:focus {
 	font-size: 18px;
 }
 
-.content .navbar-nav li {}
+.content .navbar-nav li {
+}
 
 .main-content {
 	margin-top: 55px;
@@ -711,6 +712,7 @@ button:focus {
 
 .main-header.navbar-default .navbar-nav>li.user {
 	border-left: 1px solid white;
+	position: relative;
 }
 
 .main-header.navbar-default .navbar-nav>li.user>a {
@@ -1308,7 +1310,37 @@ button:focus {
 	color: white;
 	opacity: 1;
 	transition: .5s;
+	margin-right: 5px;
+	position: relative;
+	top: 1px;
 }
 .inside-tab .main-tab li.arrow:hover a{padding-right: 30px;}
 
 .main-active2.inside-tab .main-tab li.arrow a svg{transform: rotate(180deg);}
+
+
+.porfile-div {padding: 0;max-width: 112px;position: absolute;right: 16px;bottom: -47px;display: none;}
+
+.porfile-div ul{list-style: none;padding: 0;background: #2e475d;}
+
+.content .navbar-nav .porfile-div ul li{padding: 7px 15px;}
+
+.porfile-div ul li a{color: white;}
+
+.porfile-div ul li a svg{
+	margin-right: 5px;
+	font-size: 18px;
+	position: relative;
+	top: 2px;
+}
+
+.main-header.navbar-default .navbar-nav>li.user.active a{
+background: none
+
+}
+.main-header.navbar-default .navbar-nav>li.user a:hover,.main-header.navbar-default .navbar-nav>.active>a:focus{
+	color: #ffffff;
+}
+.main-header.navbar-default .navbar-nav>li.user.active .porfile-div {
+display: block;
+} 

@@ -1,5 +1,20 @@
 
 @media(max-width: 768px) {
+
+	.logout-profile{
+
+font-size: 25px;
+
+margin-left: 10px;
+
+position: relative;
+
+top: 5px;
+
+}
+	.logout-profile svg{
+		
+	}
 	.logo-div {
     }
   .mobile-serach-profile.search-div{

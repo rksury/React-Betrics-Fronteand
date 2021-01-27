@@ -46,7 +46,15 @@ export class Dashboard extends Component {
                            <i className=" fas fa-search"></i>
                         </li>
                         <li className="bell-icon"><a href="#"><img src="img/bell.png"></img><span></span></a></li>
-                        <li className="user"><a href="#" className="img">Jones Ferdinand <img src="img/user-img.png"></img></a></li>
+                        <li className="user"><a href="#" className="img">Jones Ferdinand <img src="img/user-img.png"></img></a>
+                        
+                        <div class="porfile-div">
+                   	    <ul>
+                   		    <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                   	    </ul>
+                        </div>  
+                        
+                        </li>
                      </ul>
                   </div>
                </div>
@@ -58,6 +66,7 @@ export class Dashboard extends Component {
                </div>
                <div className="right-div">
                   <a href="https://www.google.co" className="img">Jones Ferdinand <img src="img/user-img.png"></img></a>
+                  <a href="#" class="logout-profile"><i class="fas fa-sign-out-alt"></i></a>
                </div>
             </div>
             <div className="search-div mobile-serach-profile">
@@ -123,7 +132,7 @@ export class Dashboard extends Component {
                               <a data-toggle="pill" href="#matchup">Matchup</a>
                            </li>
                            <li className="arrow">
-                              <a data-toggle="pill" href="#news" className="arrow-a"><i className="fas fa-angle-double-left"></i></a>
+                              <a data-toggle="pill" href="#news" className="arrow-a"><i className="fas fa-angle-double-left"></i>News</a>
                            </li>
                         </ul>
                        
