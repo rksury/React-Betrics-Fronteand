@@ -38,6 +38,7 @@ export class Login extends React.Component {
             .then(res => {
                 let err = JSON.parse(res.request.response)
                 if (res.status === 200) {
+                    localStorage.setItem('nick_name', res.data.nick_name)
                     this.api.setToken(res.data.access)
                     this.props.history.push('/dashboard')
                 }else if (res.request.status === 401) {

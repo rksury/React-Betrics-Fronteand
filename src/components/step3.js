@@ -75,10 +75,10 @@ export class Step3 extends Component {
                         </div>
                     </div>
                     <div className="btn-div text-center">
-                        <button className="btn-pre" onClick={() => this.props.history.push('/step')}><i
+                        <button className="btn-pre" onClick={() => this.props.history.push('/step2')}><i
                             className="fa fa-arrow-left"/>Back
                         </button>
-                        <button className="btn btn-next" type={"submit"} onClick={this.get_books}>Next</button>
+                        <button className="btn btn-next" type={"submit"} onClick={() => this.props.history.push('/step4')}>Next</button>
                     </div>
                 </div>
             </div>

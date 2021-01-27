@@ -31,7 +31,7 @@ export class Step1 extends Component {
             user_level: +this.state.user_level
         }
         console.log(typeof (data['user_level']))
-        let url = 'user/update-preference'
+        let url = 'update-preference'
         this.api.PatchApi(data, url)
             .then((res) => {
                 if (res.status === 200) {

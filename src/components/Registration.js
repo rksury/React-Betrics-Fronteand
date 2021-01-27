@@ -18,17 +18,13 @@ export class Register extends Component {
             confirm_password: ''
         }
 
-        this.changeEmailHandler = this.changeEmailHandler.bind(this);
-        this.changeFirstNameHandler = this.changeFirstNameHandler.bind(this);
-        this.changeLastNameHandler = this.changeLastNameHandler.bind(this);
-        this.changePasswordHandler = this.changePasswordHandler.bind(this);
-        this.changeConfirmPasswordHandler = this.changeConfirmPasswordHandler.bind(this);
         this.registration = this.registration.bind(this);
+        this.OnChangeHandler = this.OnChangeHandler.bind(this);
 
     }
 
-    changeEmailHandler(event) {
-        this.setState({email: event.target.value});
+    OnChangeHandler(event) {
+        this.setState({[event.target.name]: event.target.value});
     }
 
 
@@ -45,10 +41,11 @@ export class Register extends Component {
         this.api.PostApi(data, url)
             .then((res) => {
                 let err = JSON.parse(res.request.response)
-                if (res.status === 201) {
+                if (res.request.status === 200) {
                     let url = 'login'
                     this.api.PostApi(data, url).then((loginRes) => {
                         if (loginRes.status === 200) {
+                            localStorage.setItem('nick_name', loginRes.data.nick_name)
                             this.api.setToken(loginRes.data.access)
                             this.props.history.push('/step1')
                         }
@@ -59,7 +56,6 @@ export class Register extends Component {
                 }
                 else if (res.request.status  === 400) {
                     this.setState({
-                        error_email: err['email'],
                         error_password: err['password'],
                         error_first_name: err['first_name'],
                         error_last_name: err['last_name'],
@@ -89,35 +85,35 @@ export class Register extends Component {
 
                     <div className="input-div-in">
                         <label htmlFor="firstname">First Name</label>
-                        <input value={this.state.first_name} onChange={this.changeFirstNameHandler} type="text"
-                               id="firstname" name="name" placeholder="First Name"/>
+                        <input value={this.state.first_name} onChange={this.OnChangeHandler} type="text"
+                               id="firstname" name="first_name" placeholder="First Name"/>
                         <span >{this.state.error_first_name}</span>
                     </div>
 
                     <div className="input-div-in">
                         <label htmlFor="lastname">Last Name</label>
-                        <input value={this.state.last_name} onChange={this.changeLastNameHandler} type="text"
-                               id="lastname" name="name" placeholder="Last Name"/>
+                        <input value={this.state.last_name} onChange={this.OnChangeHandler} type="text"
+                               id="lastname" name="last_name" placeholder="Last Name"/>
                         <span>{this.state.error_last_name}</span>
                     </div>
 
                     <div className="input-div-in">
                         <label htmlFor="email">Email address</label>
-                        <input value={this.state.email} onChange={this.changeEmailHandler} type="email" id="email"
+                        <input value={this.state.email} onChange={this.OnChangeHandler} type="email" id="email"
                                name="email" placeholder="Email address"/>
                         <span >{this.state.error_email}</span>
                     </div>
 
                     <div className="input-div-in">
                         <label htmlFor="password">Password</label>
-                        <input value={this.state.password} onChange={this.changePasswordHandler} type="password"
+                        <input value={this.state.password} onChange={this.OnChangeHandler} type="password"
                                name="password" placeholder="Password"/>
                         <span >{this.state.error_password}</span>
                     </div>
 
                     <div className="input-div-in">
                         <label htmlFor="confirm_password">Confirm Password</label>
-                        <input value={this.state.confirm_password}    onChange={this.changeConfirmPasswordHandler} type="password"
+                        <input value={this.state.confirm_password}    onChange={this.OnChangeHandler} type="password"
                                name="confirm_password" placeholder="Password"/>
                         <span >{this.state.error_confirm_password}</span>
                     </div>    

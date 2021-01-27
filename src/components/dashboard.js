@@ -34,6 +34,11 @@ export class Dashboard extends Component {
             })
 
         this.getWeeks()
+        this.getUserDetails()
+    }
+
+    getUserDetails(){
+        this.setState({'nick_name': localStorage.getItem('nick_name')})
     }
 
     getWeeks() {
@@ -65,12 +70,20 @@ export class Dashboard extends Component {
         }
         this.api.GetWithParamsApi('odds', params)
             .then((res) => {
+                let err = JSON.parse(res.request.response)
                 let response_data = JSON.parse(res.request.response)
+                console.log(response_data)
                 if (res.status === 200) {
                     this.setState({odds_data: response_data})
                 } else if (res.request.status === 401) {
                     this.props.history.push('/login')
-                } else {
+
+                }
+                else if (res.request.status  === 400) {
+                    this.setState({ error: err['error'] }
+                    )
+                }
+                 else {
                     console.log(res)
                 }
             })
@@ -91,16 +104,17 @@ export class Dashboard extends Component {
 
     render() {
         return (
+
             <div className="container-fluid">
                 <div className="row">
+
                     <div className="col-md-3 left-sidebar collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <div className="row logo-div">
                             <img src="img/logo-img.png"></img>
                         </div>
                         <div className="menu-list">
                             <ul>
-                                <li className="active"><a href="#"><i className="fas fa-chart-pie"></i> My Betrics</a>
-                                </li>
+                                <li className="active"><a href="#"><i className="fas fa-chart-pie"></i> My Betrics</a></li>
                                 <li><a href="#"><i className="fas fa-ticket-alt"></i> My Betrics</a></li>
                                 <li><a href="#"><i className="  fas fa-book"></i> My Sportsbooks</a></li>
                                 <li><a href="#"><i className="fas fa-users"></i> Betrics University</a></li>
@@ -118,8 +132,7 @@ export class Dashboard extends Component {
                         <nav className="navbar navbar-default main-header">
                             <div className="container-fluid">
                                 <div className="navbar-header">
-                                    <button type="button" className="navbar-toggle collapsed" data-toggle="collapse"
-                                            data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                    <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                                         <span className="sr-only">Toggle navigation</span>
                                         <span className="icon-bar"></span>
                                         <span className="icon-bar"></span>
@@ -127,16 +140,14 @@ export class Dashboard extends Component {
                                     </button>
                                     <a className="navbar-brand" href="#">DASHBOARD</a>
                                 </div>
-                                <div className="collapse navbar-collapse menu-hide-mobile navbar-tp-lft">
+                                <div className="collapse navbar-collapse menu-hide-mobile navbar-tp-lft" >
                                     <ul className="nav navbar-nav navbar-right">
                                         <li className="search-div">
                                             <input type="" name="" placeholder=""></input>
                                             <i className=" fas fa-search"></i>
                                         </li>
-                                        <li className="bell-icon"><a href="#"><img
-                                            src="img/bell.png"></img><span></span></a></li>
-                                        <li className="user"><a href="#" className="img">Jones Ferdinand <img
-                                            src="img/user-img.png"></img></a></li>
+                                        <li className="bell-icon"><a href="#"><img src="img/bell.png"></img><span></span></a></li>
+                                        <li className="user"><a href="#" className="img">{this.state.nick_name} <img src="img/user-img.png"></img></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -147,8 +158,7 @@ export class Dashboard extends Component {
                                 <a href="https://www.google.com"><img src="img/bell.png"></img><span></span></a>
                             </div>
                             <div className="right-div">
-                                <a href="https://www.google.co" className="img">Jones Ferdinand <img
-                                    src="img/user-img.png"></img></a>
+                                <a href="https://www.google.co" className="img">{this.state.nick_name}<img src="img/user-img.png"></img></a>
                             </div>
                         </div>
                         <div className="search-div mobile-serach-profile">
@@ -191,7 +201,7 @@ export class Dashboard extends Component {
                                     <li className="coming-soon-div">
                                         <a data-toggle="pill" href="#main-content-section3">
                                             <div className="both-div">
-                                                <div className="img-div">
+                                                <div className="img-div third-img-div">
                                                     <img src="img/tab-img3.png" className="third-img"></img>
                                                 </div>
                                                 <div className="content-div">
@@ -206,15 +216,15 @@ export class Dashboard extends Component {
                                     </li>
                                 </ul>
 
-                                <div className="tab-content main-tab-content inside-tab">
+                                <div className="tab-content main-tab-content inside-tab main-active">
                                     <div id="main-content-section" className="tab-pane tab-content fade in active">
 
                                         <ul className="nav nav-pills main-tab">
                                             <li className="active matchup-tab">
                                                 <a data-toggle="pill" href="#matchup">Matchup</a>
                                             </li>
-                                            <li className="">
-                                                <a data-toggle="pill" href="#news">News</a>
+                                            <li className="arrow">
+                                                <a data-toggle="pill" href="#news" className="arrow-a"><i className="fas fa-angle-double-left"></i></a>
                                             </li>
                                         </ul>
 
@@ -226,34 +236,26 @@ export class Dashboard extends Component {
                                                         <div className="img-div">
                                                             <img src="img/white-icon1.png"></img>
                                                         </div>
-                                                        <div className="dorpdown-img1">
+                                                        <div className="dorpdown-img1 ">
                                                             <div className="dropdown">
-                                                                <button className="btn dropdown-toggle" type="button"
-                                                                        data-toggle="dropdown">
-                                                                    <img src="img/drop-down-img1.png"/> Betrics Bucks
-                                                                    <span className="fas fa-angle-down"/></button>
+                                                                <button className="btn dropdown-toggle" type="button" data-toggle="dropdown"><img src="img/drop-down-img1.png"></img> Betrics Bucks
+                                                                    <span className="fas fa-angle-down"></span></button>
                                                                 <ul className="dropdown-menu">
                                                                     {this.state.book_data.map(book => (
-                                                                        <li><a
-                                                                            onClick={() => this.updateBook(book.name)}><img
-                                                                            src="img/drop-down-img2.png"/>{book.name}
+                                                                        <li><a onClick={() => this.updateBook(book.name)}>
+                                                                            <img src="img/drop-down-img2.png"/>{book.name}
                                                                         </a></li>
                                                                     ))}
                                                                 </ul>
                                                             </div>
                                                         </div>
-                                                        <div className="dorpdown-img1">
+                                                        <div className="dorpdown-img1 dorpdown-img2">
                                                             <div className="dropdown">
-                                                                <button className="btn dropdown-toggle" type="button"
-                                                                        data-toggle="dropdown"><img
-                                                                    src="img/cal.png"/> Conference Championships
-                                                                    <span className="fas fa-angle-down"/></button>
+                                                                <button className="btn dropdown-toggle" type="button" data-toggle="dropdown"><img src="img/cal.png"></img> Conference Championships
+                                                                    <span className="fas fa-angle-down"></span></button>
                                                                 <ul className="dropdown-menu">
                                                                     {this.state.weeks_data.map(weeks => (
-                                                                        <li><a
-                                                                            onClick={() => this.updateWeek(weeks.sequence)}>{weeks.title_verbose}</a>
-                                                                        </li>
-                                                                    ))}
+                                                                        <li><a onClick={() => this.updateWeek(weeks.sequence)}>{weeks.title_verbose}</a> </li>                                                                    ))}
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -261,73 +263,59 @@ export class Dashboard extends Component {
                                                         {/*    <button>Bet Queue <span>2</span></button>*/}
                                                         {/*</div>*/}
                                                     </div>
-
                                                     {this.state.odds_data.map(odds_data => (
-                                                        <div className="block-div">
-                                                            <table>
-                                                                <thead>
+                                                    <div className="block-div" >
+                                                        <table>
+                                                            <thead>
+                                                            <tr>
+                                                                <th>Matchup</th>
+                                                                <th>Open</th>
+                                                                <th>Spead(Odds)</th>
+                                                                <th>Money(Impl%)</th>
+                                                                <th>Total(Odds)</th>
+                                                                <th>Score</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            {odds_data.event.competitors.map(competitor => (
+
                                                                 <tr>
-                                                                    <th>Matchup</th>
-                                                                    <th>Open</th>
-                                                                    <th>Spead(Odds)</th>
-                                                                    <th>Money(Impl%)</th>
-                                                                    <th>Total(Odds)</th>
-                                                                    <th>Score</th>
-                                                                </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                {odds_data.event.competitors.map(competitor => (
-                                                                    <tr>
-                                                                        <td data-column="Matchup"><img
-                                                                            src="img/table-img3.png"></img><span>{competitor.name}</span>
-                                                                        </td>
-                                                                        <td data-column="Open">045.0</td>
-                                                                        <td data-column="Spead(Odds)"
-                                                                            className="bg-block"><span
-                                                                            className="first-text">+6.5 <span
-                                                                            className="second-text">(-115)</span></span>
-                                                                        </td>
-                                                                        <td data-column="Money(Impl%"
-                                                                            className="bg-block"><span
-                                                                            className="first-text">+6.5 <span
-                                                                            className="second-text">(-115)</span></span>
-                                                                        </td>
-                                                                        <td data-column="Total(Odds)"
-                                                                            className="bg-block"><span
-                                                                            className="first-text">+6.5 <span
-                                                                            className="second-text">(-115)</span></span>
-                                                                        </td>
-                                                                        <td data-column="Score"></td>
-                                                                    </tr>
-                                                                ))}
-                                                                </tbody>
-                                                            </table>
-                                                            <div className="time-button-div">
-                                                                <div className="row">
-                                                                    <div className="col-md-6 col-sm-6  text">
-                                                                        <p><span>{(Date.parse(odds_data.event.scheduled))}</span></p>
-                                                                    </div>
-                                                                    <div className="col-md-5 col-sm-6  button-div">
-                                                                        <button>WAR ROOM</button>
-                                                                    </div>
+                                                                <td data-column="Matchup"><img src="img/table-img1.png"></img><span>{competitor.name}</span></td>
+                                                                <td data-column="Open">045.0</td>
+                                                                <td data-column="Spead(Odds)" className="bg-block"><span className="first-text">+6.5 <span className="second-text">(-115)</span></span></td>
+                                                                <td data-column="Money(Impl%" className="bg-block"><span className="first-text">+6.5 <span className="second-text">(-115)</span></span></td>
+                                                                <td data-column="Total(Odds)" className="bg-block"><span className="first-text">+6.5 <span className="second-text">(-115)</span></span></td>
+                                                                <td data-column="Score"></td>
+                                                            </tr>
+                                                            ))}
+
+                                                            </tbody>
+                                                        </table>
+                                                        <div className="time-button-div">
+                                                            <div className="row">
+                                                                <div className="col-md-6 col-sm-6  text">
+                                                                    <p><span>{new Date(Date.parse(odds_data.event.scheduled)).toDateString()}</span></p>
+                                                                </div>
+                                                                <div className="col-md-5 col-sm-6  button-div">
+                                                                    <button>WAR ROOM</button>
                                                                 </div>
                                                             </div>
-                                                        </div>))}
+                                                        </div>
+                                                    </div>
+                                                    ))}
                                                 </div>
                                                 <div className="col-md-5 table-resposiv left-table">
                                                     <div className="right-drop-down">
                                                         <div className="drop-down-div">
                                                             <div className="select-drop">
                                                                 <select className="First-menu" id="First-menu">
-                                                                    <option value="Decision Engine">Decision Engine
-                                                                    </option>
-                                                                    <option value="Decision Engine">Decision Engine
-                                                                    </option>
+                                                                    <option value="Decision Engine">Decision Engine</option>
+                                                                    <option value="Decision Engine">Decision Engine</option>
                                                                     <option value="Team Stats">Team Stats</option>
                                                                     <option value="None">None</option>
                                                                 </select>
                                                             </div>
-                                                            <div className="select-drop displaynone" id="records-div">
+                                                            <div className="select-drop displaynone" id="records-div" >
                                                                 <select className="First-menu" id="records">
                                                                     <option value="Records">Records</option>
                                                                     <option value="Records">Records</option>
@@ -336,37 +324,33 @@ export class Dashboard extends Component {
                                                             </div>
                                                             <div className="select-drop" id="predicted-div">
                                                                 <select className="First-menu" id="predicted">
-                                                                    <option value="Predicted Lines">Predicted Lines
-                                                                    </option>
+                                                                    <option value="Predicted Lines">Predicted Lines</option>
                                                                     <option value="Confidence">Confidence %</option>
                                                                     <option value="Edge">Edge %</option>
                                                                 </select>
                                                             </div>
                                                             <div className="select-drop" id="my-decision-div">
                                                                 <select className="First-menu" id="my-decision">
-                                                                    <option value="My Decision Engine">My Decision
-                                                                        Engine
-                                                                    </option>
-                                                                    <option value="My Decision Engine">My Decision
-                                                                        Engine
-                                                                    </option>
+                                                                    <option value="My Decision Engine">My Decision Engine</option>
+                                                                    <option value="My Decision Engine">My Decision Engine</option>
                                                                 </select>
                                                             </div>
                                                             <div className="filter-option">
                                                                 <a href="#"><i className=" fas fa-sliders-h"></i></a>
                                                             </div>
+                                                            <div className="right-button-div">
+                                                                <button>RUN ENGINE</button>
+                                                            </div>
                                                             <div className="clearfix"></div>
                                                         </div>
-                                                        <div className="right-button-div">
-                                                            <button>RUN ENGINE</button>
-                                                        </div>
+
                                                     </div>
-                                                    <div className="block-div by-defult">
+                                                    <div className="block-div by-defult" >
                                                         <table>
                                                             <thead>
                                                             <tr>
                                                                 <th>Pred Score</th>
-                                                                <th>Spread</th>
+                                                                <th>Spread </th>
                                                                 <th>Win</th>
                                                                 <th>Total</th>
                                                             </tr>
@@ -374,23 +358,15 @@ export class Dashboard extends Component {
                                                             <tbody>
                                                             <tr>
                                                                 <td data-column="Pred Score">22.0</td>
-                                                                <td data-column="Spread" className="bg-block"><span
-                                                                    className="first-text">4.2</span></td>
-                                                                <td data-column="Win" className="bg-block"><span
-                                                                    className="first-text"><span
-                                                                    className="second-text">37.4%</span></span></td>
-                                                                <td data-column="Total" className="bg-block"><span
-                                                                    className="first-text"><span
-                                                                    className="second-text">o48.2</span></span></td>
+                                                                <td data-column="Spread" className="bg-block"><span className="first-text">4.2</span></td>
+                                                                <td data-column="Win" className="bg-block"><span className="first-text"><span className="second-text">37.4%</span></span></td>
+                                                                <td data-column="Total" className="bg-block"><span className="first-text"><span className="second-text">o48.2</span></span></td>
                                                             </tr>
                                                             <tr>
                                                                 <td data-column="Pred Score">22.0</td>
-                                                                <td data-column="Spread" className="bg-block"><span
-                                                                    className="first-text">-4.2 </span></td>
-                                                                <td data-column="Win" className="bg-block"><span
-                                                                    className="first-text">62.6%</span></td>
-                                                                <td data-column="Total" className="bg-block"><span
-                                                                    className="first-text">u48.2</span></td>
+                                                                <td data-column="Spread" className="bg-block"><span className="first-text">-4.2 </span></td>
+                                                                <td data-column="Win" className="bg-block"><span className="first-text">62.6%</span></td>
+                                                                <td data-column="Total" className="bg-block"><span className="first-text">u48.2</span></td>
                                                             </tr>
                                                             </tbody>
                                                         </table>
@@ -401,7 +377,7 @@ export class Dashboard extends Component {
                                                             <thead>
                                                             <tr>
                                                                 <th>Pred Score</th>
-                                                                <th>Spread</th>
+                                                                <th>Spread </th>
                                                                 <th>Win</th>
                                                                 <th>Total</th>
                                                             </tr>
@@ -409,102 +385,85 @@ export class Dashboard extends Component {
                                                             <tbody>
                                                             <tr>
                                                                 <td data-column="Pred Score">22.0</td>
-                                                                <td data-column="Spread" className="bg-block"><span
-                                                                    className="first-text">4.2</span></td>
-                                                                <td data-column="Win" className="bg-block"><span
-                                                                    className="first-text"><span
-                                                                    className="second-text">37.4%</span></span></td>
-                                                                <td data-column="Total" className="bg-block"><span
-                                                                    className="first-text"><span
-                                                                    className="second-text">o48.2</span></span></td>
+                                                                <td data-column="Spread" className="bg-block"><span className="first-text">4.2</span></td>
+                                                                <td data-column="Win" className="bg-block"><span className="first-text"><span className="second-text">37.4%</span></span></td>
+                                                                <td data-column="Total" className="bg-block"><span className="first-text"><span className="second-text">o48.2</span></span></td>
                                                             </tr>
                                                             <tr>
                                                                 <td data-column="Pred Score">22.0</td>
-                                                                <td data-column="Spread" className="bg-block"><span
-                                                                    className="first-text">-4.2 </span></td>
-                                                                <td data-column="Win" className="bg-block"><span
-                                                                    className="first-text">62.6%</span></td>
-                                                                <td data-column="Total" className="bg-block"><span
-                                                                    className="first-text">u48.2</span></td>
+                                                                <td data-column="Spread" className="bg-block"><span className="first-text">-4.2 </span></td>
+                                                                <td data-column="Win" className="bg-block"><span className="first-text">62.6%</span></td>
+                                                                <td data-column="Total" className="bg-block"><span className="first-text">u48.2</span></td>
                                                             </tr>
                                                             </tbody>
                                                         </table>
                                                     </div>
-                                                    <div className="block-div records record displaynone" id="records">
+                                                    <div className="block-div records record displaynone" id="records" >
                                                         <table>
                                                             <thead>
                                                             <tr>
                                                                 <th>TB</th>
-                                                                <th></th>
+                                                                <th> </th>
                                                                 <th>GB</th>
                                                             </tr>
                                                             </thead>
                                                             <tbody className="records-table">
                                                             <tr>
                                                                 <td data-column="TB">22.0</td>
-                                                                <td data-column=""><span
-                                                                    className="team">Straight Up</span></td>
+                                                                <td data-column="" ><span className="team">Straight Up</span></td>
                                                                 <td data-column="GB">13-3</td>
                                                             </tr>
                                                             <tr>
                                                                 <td data-column="TB">22.0</td>
-                                                                <td data-column=""><span className="team">ATS</span>
-                                                                </td>
+                                                                <td data-column="" ><span className="team">ATS</span></td>
                                                                 <td data-column="GB">13-3</td>
                                                             </tr>
                                                             <tr>
                                                                 <td data-column="TB">22.0</td>
-                                                                <td data-column=""><span
-                                                                    className="team">Diff vs Spread</span></td>
+                                                                <td data-column="" ><span className="team">Diff vs Spread</span></td>
                                                                 <td data-column="GB">13-3</td>
                                                             </tr>
                                                             <tr>
                                                                 <td data-column="TB">22.0</td>
-                                                                <td data-column=""><span
-                                                                    className="team">Diff vs Spread</span></td>
+                                                                <td data-column="" ><span className="team">Diff vs Spread</span></td>
                                                                 <td data-column="GB">13-3</td>
                                                             </tr>
                                                             <tr>
                                                                 <td data-column="TB">22.0</td>
-                                                                <td data-column=""><span
-                                                                    className="team">Diff vs O/U</span></td>
+                                                                <td data-column="" ><span className="team">Diff vs O/U</span></td>
                                                                 <td data-column="GB">13-3</td>
                                                             </tr>
                                                             </tbody>
                                                         </table>
                                                     </div>
-                                                    <div className="block-div scoring record displaynone" id="scoring">
+                                                    <div className="block-div scoring record displaynone" id="scoring" >
                                                         <table>
                                                             <thead>
                                                             <tr>
                                                                 <th>TB</th>
-                                                                <th></th>
+                                                                <th> </th>
                                                                 <th>GB</th>
                                                             </tr>
                                                             </thead>
                                                             <tbody className="records-table">
                                                             <tr>
                                                                 <td data-column="TB">22.0</td>
-                                                                <td data-column=""><span
-                                                                    className="team">Points For</span></td>
+                                                                <td data-column="" ><span className="team">Points For</span></td>
                                                                 <td data-column="GB">13-3</td>
                                                             </tr>
                                                             <tr>
                                                                 <td data-column="TB">22.0</td>
-                                                                <td data-column=""><span
-                                                                    className="team">Points Against</span></td>
+                                                                <td data-column="" ><span className="team">Points Against</span></td>
                                                                 <td data-column="GB">13-3</td>
                                                             </tr>
                                                             <tr>
                                                                 <td data-column="TB">22.0</td>
-                                                                <td data-column=""><span className="team">1st Half Pts For</span>
-                                                                </td>
+                                                                <td data-column="" ><span className="team">1st Half Pts For</span></td>
                                                                 <td data-column="GB">13-3</td>
                                                             </tr>
                                                             <tr>
                                                                 <td data-column="TB">22.0</td>
-                                                                <td data-column=""><span className="team">1st Half Pts Vs</span>
-                                                                </td>
+                                                                <td data-column="" ><span className="team">1st Half Pts Vs</span></td>
                                                                 <td data-column="GB">13-3</td>
                                                             </tr>
                                                             </tbody>
@@ -533,8 +492,7 @@ export class Dashboard extends Component {
                                                             <div className="">
                                                                 <h3>How Davnte Adams became an aaron Rodgers... </h3>
                                                                 <p>Whether it's cosmic chemistry or photographic memory,
-                                                                    Davante Adams is in spellbinding sync with Aaron
-                                                                    Rodgers as... </p>
+                                                                    Davante Adams is in spellbinding sync with Aaron Rodgers as... </p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -550,8 +508,7 @@ export class Dashboard extends Component {
                                                             <div className="">
                                                                 <h3>How Davnte Adams became an aaron Rodgers... </h3>
                                                                 <p>Whether it's cosmic chemistry or photographic memory,
-                                                                    Davante Adams is in spellbinding sync with Aaron
-                                                                    Rodgers as... </p>
+                                                                    Davante Adams is in spellbinding sync with Aaron Rodgers as... </p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -567,8 +524,7 @@ export class Dashboard extends Component {
                                                             <div className="">
                                                                 <h3>How Davnte Adams became an aaron Rodgers... </h3>
                                                                 <p>Whether it's cosmic chemistry or photographic memory,
-                                                                    Davante Adams is in spellbinding sync with Aaron
-                                                                    Rodgers as... </p>
+                                                                    Davante Adams is in spellbinding sync with Aaron Rodgers as... </p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -584,8 +540,7 @@ export class Dashboard extends Component {
                                                             <div className="">
                                                                 <h3>How Davnte Adams became an aaron Rodgers... </h3>
                                                                 <p>Whether it's cosmic chemistry or photographic memory,
-                                                                    Davante Adams is in spellbinding sync with Aaron
-                                                                    Rodgers as... </p>
+                                                                    Davante Adams is in spellbinding sync with Aaron Rodgers as... </p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -601,8 +556,7 @@ export class Dashboard extends Component {
                                                             <div className="">
                                                                 <h3>How Davnte Adams became an aaron Rodgers... </h3>
                                                                 <p>Whether it's cosmic chemistry or photographic memory,
-                                                                    Davante Adams is in spellbinding sync with Aaron
-                                                                    Rodgers as... </p>
+                                                                    Davante Adams is in spellbinding sync with Aaron Rodgers as... </p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -618,8 +572,7 @@ export class Dashboard extends Component {
                                                             <div className="">
                                                                 <h3>How Davnte Adams became an aaron Rodgers... </h3>
                                                                 <p>Whether it's cosmic chemistry or photographic memory,
-                                                                    Davante Adams is in spellbinding sync with Aaron
-                                                                    Rodgers as... </p>
+                                                                    Davante Adams is in spellbinding sync with Aaron Rodgers as... </p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -630,10 +583,10 @@ export class Dashboard extends Component {
                                     </div>
 
                                     <div id="main-content-section2" className="tab-pane fade">
-                                        <h3>Coming Soon</h3>
+                                        <h3>Comming Soon</h3>
                                     </div>
                                     <div id="main-content-section3" className="tab-pane fade">
-                                        <h3>Coming Soon</h3>
+                                        <h3>Comming Soon</h3>
                                     </div>
                                 </div>
                             </div>
@@ -642,6 +595,7 @@ export class Dashboard extends Component {
                     </div>
                 </div>
             </div>
+
         );
     };
 }
