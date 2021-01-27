@@ -46,8 +46,10 @@ export class Dashboard extends Component {
                            <i className=" fas fa-search"></i>
                         </li>
                         <li className="bell-icon"><a href="#"><img src="img/bell.png"></img><span></span></a></li>
-                        <li className="user"><a href="#" className="img">Jones Ferdinand <img src="img/user-img.png"></img></a>
+                        <li className="user">
+                           <a href="#" className="img">Jones Ferdinand <img src="img/user-img.png"></img></a>
                         
+
                         <div class="porfile-div">
                    	    <ul>
                    		    <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
@@ -55,6 +57,7 @@ export class Dashboard extends Component {
                         </div>  
                         
                         </li>
+
                      </ul>
                   </div>
                </div>
