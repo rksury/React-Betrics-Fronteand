@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 body {
-	font-family: 'Mulish', sans-serif;
+	font-family: 'Inter', sans-serif;
 	font-size: 15px;
 	line-height: 1.5;
 	color: #777777;
@@ -378,18 +378,23 @@ button:focus {
 .navbar-collapse.collapse.left-sidebar {
 	height: 100vh!important;
 	position: fixed;
-	background: #363740;
+	background: #080809;
 	z-index: 9;
 }
 
 .logo-div {
-	padding: 39px 20px;
+	padding-top: 20px;
+	padding-bottom: 25px;
+	justify-content: center;
 	text-align: center;
 	margin: 0;
+	/*background: red;*/
 }
 
 .logo-div img {
 	margin: auto;
+	width:200px;
+	height:50px;
 }
 
 .tab-link.first {
@@ -461,17 +466,17 @@ button:focus {
 
 .content {
 	margin-left: 16.66%;
-	background: rgba(20, 23, 31, 1);
+	background: #080808;
 }
 
 .content .main-header {
 	margin: 0;
-	background: none;
+	background: #080808;
 	border: none;
-	top: 0;
+	top: 10px;
 	z-index: 9;
-	padding: 27px 0 0;
 	position: inherit;
+
 }
 
 .content .navbar .navbar-brand {
@@ -503,7 +508,9 @@ button:focus {
 }
 
 .main-content {
-	margin-top: 55px;
+	margin-top: 3%;
+	background: #202124;
+	border-radius: 20px;
 }
 
 .main-content .left {}
@@ -612,7 +619,8 @@ button:focus {
 }
 
 .menu-list ul li a {
-	font-size: 14px;
+	font-family: "Inter", sans-serif;
+	font-size: 15px;
 	color: white;
 	letter-spacing: 0.5px;
 }
@@ -736,11 +744,12 @@ button:focus {
 	display: none;
 }
 
-.main-tab {}
-
+.main-tab {
+	margin-top: 2%;
+}
 .main-tab li {
 	width: 20%;
-	margin-right: 30px;
+	margin-right: 2%;
 }
 
 .main-tab .img-div {
@@ -751,7 +760,7 @@ button:focus {
 
 .main-tab .img-div img {
 	position: relative;
-	background: none;
+	background: red;
 }
 
 .main-tab li a {
@@ -798,7 +807,7 @@ button:focus {
 .coming-soon-div p {}
 
 .coming-soon-div .coming-soon {
-	background: rgba(251, 163, 31, 1);
+	background: rgb(37, 64, 217);
 	padding: 4px 0;
 }
 
@@ -835,7 +844,7 @@ button:focus {
 
 .inside-tab .main-tab li a {
 	color: white;
-	opacity: 0.5;
+	opacity: 0.2;
 	background: none;
 	font-size: 19px;
 	padding: 0;
@@ -857,6 +866,7 @@ button:focus {
 
 .inside-tab .main-tab li.matchup-tab {
 	width: 100%;
+	/*background: red;*/
 }
 
 .coming-soon-div {
@@ -870,7 +880,8 @@ button:focus {
 .matchup {}
 
 .matchup .drop-down-div {
-	background: rgba(148, 152, 160, 1);
+	/*background: rgba(148, 152, 160, 1);*/
+	background: #2C2D32;
 	border-radius: 5px;
 	margin-top: 36px;
 	height: 92px;
@@ -908,6 +919,17 @@ button:focus {
 	font-size: 14px;
 	padding: 16px 18px 17px 10px;
 }
+.matchup .drop-down-div .dorpdown-img1 .dropdown2 button {
+	background: none;
+	border: none;
+	outline: none;
+	color: white;
+	letter-spacing: 0.5px;
+	height: 70px;
+	font-size: 14px;
+	padding: 16px 18px 17px 10px;
+}
+
 .matchup .drop-down-div .dorpdown-img1 .dropdown button svg{
 	position: relative;
 	left: 6px;
@@ -1023,6 +1045,8 @@ button:focus {
 	width: 5px
 }
 
+
+
 .right-drop-down {}
 
 .right-drop-down .select-drop {
@@ -1031,20 +1055,35 @@ button:focus {
 	margin-right: 6px;
 	margin-bottom: 10px;
 }
+.right-drop-down .rightDropDown{
+	background: red;
+	border: none;
+	outline: none;
+	color: white;
+	letter-spacing: 0.5px;
+	/*height: 92px;*/
+	font-size: 14px;
+	padding: 16px 18px 17px 10px;
+}
+.right-drop-down .rightDropDown button {
+	position: relative;
+	left: 6px;
+}
 
 .right-drop-down .select-drop select {
-	background: rgba(238, 238, 238, 1);
-	color: rgb(20 23 31 / 84%);
+	background: #2C2D32;
+	color: #ffffff;
 	width: 100%;
-	border: none;
+	/*border: 5px;*/
 	font-size: 12px;
-	border-radius: 16px;
+	border-radius: 2px;
 	padding: 3px 8px;
 	font-weight: 500;
 }
 
 .right-drop-down .select-drop option {
 	padding: 0 18px;
+	color: #ffffff;
 }
 
 .right-drop-down {
@@ -1055,6 +1094,7 @@ button:focus {
 	float: left;
 	position: relative;
 	top: 3px;
+	left: 10px;
 }
 
 .right-drop-down .filter-option a {
@@ -1077,19 +1117,18 @@ button:focus {
 }
 
 .right-drop-down .right-button-div button {
-	background: rgba(20, 48, 196, 1);
-	box-shadow: 0px 0px 6.0229878425598145px 1.0038316249847412px rgba(123, 206, 255, 1);
+	background: rgb(74, 89, 187);
 	color: white;
 	border-radius: 5px;
 	border: none;
 	font-size: 13px;
-	width: 115px;
+	width: 140px;
 	padding: 3px 0;
 	display: inline-block;
 }
 
 .right-drop-down .right-button-div button:hover {
-	background: #9498a0;
+	background: #2540D9;
 }
 
 .right-drop-down .drop-down-div {
@@ -1122,11 +1161,11 @@ button:focus {
 .table-resposiv th {
 	padding: 10px;
 	text-align: left;
-	font-size: 12px;
+	font-size: 14px;
 }
 
 .table-resposiv .block-div {
-	background: rgba(33, 47, 68, 1);
+	background: #2C2D32;
 	padding: 5px 15px 22px;
 	border-radius: 14.7585px;
 	margin-bottom: 30px;
@@ -1139,7 +1178,9 @@ button:focus {
 .block-div table tr td span {
 	margin-left: 10px;
 }
-
+predScoreText{
+	font-size: 10px;
+}
 .block-div table tr td.bg-block {
 	padding: 0 1px 7px;
 }
@@ -1205,11 +1246,11 @@ button:focus {
 }
 
 .time-button-div .button-div button:hover {
-	background: #9498a0;
+	background: #1f4795;
 }
 
 .left-table tr td:first-child {
-	font-size: 18px;
+	font-size: 14px;
 }
 
 .left-table .block-div table tr td.bg-block span.first-text {

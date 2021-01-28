@@ -175,19 +175,18 @@ export class Dashboard extends Component {
 
                     <div className="col-md-3 left-sidebar collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <div className="row logo-div">
-                            <img src="img/logo-img.png"></img>
+                            <img src="img/logo-img.png"/>
                         </div>
                         <div className="menu-list">
                             <ul>
-                                <li className="active"><a href="#"><i className="fas fa-chart-pie"></i> My Betrics</a></li>
-                                <li><a href="#"><i className="fas fa-ticket-alt"></i> My Betrics</a></li>
-                                <li><a href="#"><i className="  fas fa-book"></i> My Sportsbooks</a></li>
-                                <li><a href="#"><i className="fas fa-users"></i> Betrics University</a></li>
-                                <li><a href="#"><i className="fas fa-lightbulb"></i> Ideas</a></li>
-                                <li><a href="#"><i className="fas fa-user-alt"></i> Contact</a></li>
-                                <li className="sprate"></li>
-                                <li><a href="#"><i className="fas fa-cog"></i> Settings</a></li>
-                                <li><a href="#"><i className="fas fa-award"></i> Subscription</a></li>
+                                <li className="active"><a href="#"><i className="fas fa-chart-pie"/>My Betrics</a></li>
+                                <li><a href="#" ><i className="fas fa-book"/> My Sportsbooks</a></li>
+                                <li><a href="#"><i className="fas fa-users"/> Betrics University</a></li>
+                                <li><a href="#"><i className="fas fa-lightbulb"/> Ideas</a></li>
+                                <li><a href="#"><i className="fas fa-user-alt"/> Contact</a></li>
+                                <li className="sprate"/>
+                                <li><a href="#"><i className="fas fa-cog"/> Settings</a></li>
+                                <li><a href="#"><i className="fas fa-award"/> Subscription</a></li>
                             </ul>
                         </div>
                     </div>
@@ -199,21 +198,21 @@ export class Dashboard extends Component {
                                 <div className="navbar-header">
                                     <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                                         <span className="sr-only">Toggle navigation</span>
-                                        <span className="icon-bar"></span>
-                                        <span className="icon-bar"></span>
-                                        <span className="icon-bar"></span>
+                                        <span className="icon-bar"/>
+                                        <span className="icon-bar"/>
+                                        <span className="icon-bar"/>
                                     </button>
-                                    <a className="navbar-brand" href="#">DASHBOARD</a>
+                                    <a className="navbar-brand" >DASHBOARD</a>
                                 </div>
                                 <div className="collapse navbar-collapse menu-hide-mobile navbar-tp-lft" >
                                     <ul className="nav navbar-nav navbar-right">
-                                        <li className="search-div">
-                                            <input type="" name="" placeholder=""></input>
-                                            <i className=" fas fa-search"></i>
-                                        </li>
-                                        <li className="bell-icon"><a href="#"><img src="img/bell.png"></img><span></span></a></li>
+                                        {/*<li className="search-div">*/}
+                                        {/*    <input type="" name="" placeholder=""/>*/}
+                                        {/*    <i className=" fas fa-search"/>*/}
+                                        {/*</li>*/}
+                                        <li className="bell-icon"><a href="#"><img src="img/bell.png"/><span></span></a></li>
                                         <li className="user">
-                                            <a href="#" className="img">{}<img src="img/user-img.png"></img></a>
+                                            <a href="#" className="img-fluid">{}<img src="img/user-img.png"/></a>
                                             <div className="porfile-div">
                                                 <ul>
                                                     <li><a onClick={() => this.logout()}><i className="fas fa-sign-out-alt"/> Logout</a>
@@ -238,11 +237,11 @@ export class Dashboard extends Component {
 
                             </div>
                         </div>
-                        <div className="search-div mobile-serach-profile">
-                            <input type="" name="" placeholder="Search"></input>
-                            <i className="glyphicon glyphicon-search"></i>
-                        </div>
-                        <div className="clearfix"></div>
+                        {/*<div className="search-div mobile-serach-profile">*/}
+                        {/*    <input type="" name="" placeholder="Search"/>*/}
+                        {/*    <i className="glyphicon glyphicon-search"></i>*/}
+                        {/*</div>*/}
+                        <div className="clearfix"/>
 
                         <div className="main-content">
                             <div className=" main-container container-fluid">
@@ -251,7 +250,7 @@ export class Dashboard extends Component {
                                     <li className="active">
                                         <a data-toggle="pill" href="#main-content-section">
                                             <div className="img-div">
-                                                <img src="img/tab-img.png"></img>
+                                                <img src="img/tab-img.png"/>
                                             </div>
                                             <div className="content-div">
                                                 <h3>NFL</h3>
@@ -260,13 +259,13 @@ export class Dashboard extends Component {
                                         </a>
                                     </li>
                                     <li className="coming-soon-div">
-                                        <a data-toggle="pill" href="#main-content-section2">
+                                        <a data-toggle="pill" href="#main-content-section3">
                                             <div className="both-div">
-                                                <div className="img-div">
-                                                    <img src="img/tab-img2.png"></img>
+                                                <div className="img-div third-img-div">
+                                                    <img src="img/tab-img3.png" className="third-img"/>
                                                 </div>
                                                 <div className="content-div">
-                                                    <h3>NFL</h3>
+                                                    <h3>NBA</h3>
                                                     <p>League</p>
                                                 </div>
                                             </div>
@@ -279,10 +278,10 @@ export class Dashboard extends Component {
                                         <a data-toggle="pill" href="#main-content-section3">
                                             <div className="both-div">
                                                 <div className="img-div third-img-div">
-                                                    <img src="img/tab-img3.png" className="third-img"></img>
+                                                    <img src="img/tab-img3.png" className="third-img"/>
                                                 </div>
                                                 <div className="content-div">
-                                                    <h3>NFL</h3>
+                                                    <h3>NCAAB</h3>
                                                     <p>League</p>
                                                 </div>
                                             </div>
@@ -297,12 +296,16 @@ export class Dashboard extends Component {
                                     <div id="main-content-section" className="tab-pane tab-content fade in active">
 
                                         <ul className="nav nav-pills main-tab">
+                                            <div>
                                             <li className="active matchup-tab">
                                                 <a data-toggle="pill" href="#matchup">Matchup</a>
                                             </li>
+                                            </div>
+                                            <div>
                                             <li className="arrow">
-                                                <a data-toggle="pill" href="#news" className="arrow-a"><i className="fas fa-angle-double-left"></i>News</a>
+                                                <a data-toggle="pill" href="#news" className="arrow-a"><i className="fas fa-angle-double-left"/>News</a>
                                             </li>
+                                            </div>
                                         </ul>
 
                                         <div id="matchup" className="matchup tab-pane fade in active">
@@ -311,12 +314,12 @@ export class Dashboard extends Component {
                                                 <div className="col-md-7 table-resposiv">
                                                     <div className="drop-down-div">
                                                         <div className="img-div">
-                                                            <img src="img/white-icon1.png"></img>
+                                                            <img src="img/white-icon1.png"/>
                                                         </div>
                                                         <div className="dorpdown-img1 ">
                                                             <div className="dropdown">
                                                                 <button className="btn dropdown-toggle" type="button" data-toggle="dropdown" ><img src="img/drop-down-img1.png"></img> {this.state.selected_book.name}
-                                                                    <span className="fas fa-angle-down"></span></button>
+                                                                    <span className="fas fa-angle-down arrowRight"/></button>
                                                                 <ul className="dropdown-menu">
                                                                     {this.state.book_data.map(book => (
                                                                         <li><a onClick={() => this.updateBook(book.name, book)}>
@@ -328,17 +331,14 @@ export class Dashboard extends Component {
                                                         </div>
                                                         <div className="dorpdown-img1 dorpdown-img2">
                                                             <div className="dropdown">
-                                                                <button className="btn dropdown-toggle" type="button" data-toggle="dropdown"><img src="img/cal.png"></img> {this.state.selected_week.title_verbose}
-                                                                    <span className="fas fa-angle-down"></span></button>
+                                                                <button className="btn dropdown-toggle" type="button" data-toggle="dropdown"><img src="img/cal.png"/> {this.state.selected_week.title_verbose}
+                                                                    <span className="fas fa-angle-down"/></button>
                                                                 <ul className="dropdown-menu">
                                                                     {this.state.weeks_data.map(weeks => (
                                                                         <li><a onClick={() => this.updateWeek(weeks.sequence, weeks)}>{weeks.title_verbose}</a> </li>                                                                    ))}
                                                                 </ul>
                                                             </div>
                                                         </div>
-                                                        {/*<div className="button-div">*/}
-                                                        {/*    <button>Bet Queue <span>2</span></button>*/}
-                                                        {/*</div>*/}
                                                     </div>
                                                     {this.state.odds_data.map(odds_data => (
                                                     <div className="block-div" >
@@ -347,7 +347,7 @@ export class Dashboard extends Component {
                                                             <tr>
                                                                 <th>Matchup</th>
                                                                 <th>Open</th>
-                                                                <th>Spead(Odds)</th>
+                                                                <th>Spread(Odds)</th>
                                                                 <th>Money(Impl%)</th>
                                                                 <th>Total(Odds)</th>
                                                                 <th>Score</th>
@@ -357,12 +357,12 @@ export class Dashboard extends Component {
                                                             {odds_data.event.competitors.map(competitor => (
 
                                                                 <tr>
-                                                                <td data-column="Matchup"><img src="img/table-img1.png"></img><span>{competitor.name}</span></td>
+                                                                <td data-column="Matchup"><img src="img/table-img1.png"/><span>{competitor.name}</span></td>
                                                                 <td data-column="Open">045.0</td>
                                                                 <td data-column="Spead(Odds)" className="bg-block"><span className="first-text">+6.5 <span className="second-text">(-115)</span></span></td>
                                                                 <td data-column="Money(Impl%" className="bg-block"><span className="first-text">+6.5 <span className="second-text">(-115)</span></span></td>
                                                                 <td data-column="Total(Odds)" className="bg-block"><span className="first-text">+6.5 <span className="second-text">(-115)</span></span></td>
-                                                                <td data-column="Score"></td>
+                                                                <td data-column="Score"/>
                                                             </tr>
                                                             ))}
 
@@ -381,47 +381,70 @@ export class Dashboard extends Component {
                                                     </div>
                                                     ))}
                                                 </div>
-                                                <div className="col-md-5 table-resposiv left-table">
-                                                    <div className="right-drop-down">
-                                                        <div className="drop-down-div">
-                                                            <div className="select-drop">
-                                                                <select className="First-menu" id="First-menu">
-                                                                    <option value="Decision Engine">Decision Engine</option>
-                                                                    <option value="Decision Engine">Decision Engine</option>
-                                                                    <option value="Team Stats">Team Stats</option>
-                                                                    <option value="None">None</option>
-                                                                </select>
-                                                            </div>
-                                                            <div className="select-drop displaynone" id="records-div" >
-                                                                <select className="First-menu" id="records">
-                                                                    <option value="Records">Records</option>
-                                                                    <option value="Records">Records</option>
-                                                                    <option value="Scoring">Scoring</option>
-                                                                </select>
-                                                            </div>
-                                                            <div className="select-drop" id="predicted-div">
-                                                                <select className="First-menu" id="predicted">
-                                                                    <option value="Predicted Lines">Predicted Lines</option>
-                                                                    <option value="Confidence">Confidence %</option>
-                                                                    <option value="Edge">Edge %</option>
-                                                                </select>
-                                                            </div>
-                                                            <div className="select-drop" id="my-decision-div">
-                                                                <select className="First-menu" id="my-decision">
-                                                                    <option value="My Decision Engine">My Decision Engine</option>
-                                                                    <option value="My Decision Engine">My Decision Engine</option>
-                                                                </select>
-                                                            </div>
-                                                            <div className="filter-option">
-                                                                <a href="#"><i className=" fas fa-sliders-h"></i></a>
-                                                            </div>
-                                                            <div className="right-button-div">
-                                                                <button>RUN ENGINE</button>
-                                                            </div>
-                                                            <div className="clearfix"></div>
-                                                        </div>
 
-                                                    </div>
+
+                                                <div className="col-md-5 table-resposiv">
+                                                        <div className="drop-down-div">
+                                                            <div className="drop-down-div">
+                                                                <div className="dorpdown-img1 ">
+                                                                    <div className="dropdown">
+                                                                        <button className="btn dropdown-toggle" type="button" data-toggle="dropdown" >{this.state.selected_book.name}
+                                                                            <span className="fas fa-angle-down arrowRight"/></button>
+                                                                        <ul className="dropdown-menu">
+                                                                            {this.state.book_data.map(book => (
+                                                                                <li><a onClick={() => this.updateBook(book.name, book)}>{book.name}
+                                                                                </a></li>
+                                                                            ))}
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                                <div className="dorpdown-img1 dorpdown-img2">
+                                                                    <div className="dropdown">
+                                                                        <button className="btn dropdown-toggle" type="button" data-toggle="dropdown">{this.state.selected_week.title_verbose}
+                                                                            <span className="fas fa-angle-down"/></button>
+                                                                        <ul className="dropdown-menu">
+                                                                            {this.state.weeks_data.map(weeks => (
+                                                                                <li><a onClick={() => this.updateWeek(weeks.sequence, weeks)}>{weeks.title_verbose}</a> </li>                                                                    ))}
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            {/*<div className="select-drop">*/}
+                                                            {/*    <select className="First-menu" id="First-menu">*/}
+                                                            {/*        <option value="Decision Engine">Decision Engine</option>*/}
+                                                            {/*        <option value="Decision Engine">Decision Engine</option>*/}
+                                                            {/*        <option value="Team Stats">Team Stats</option>*/}
+                                                            {/*        <option value="None">None</option>*/}
+                                                            {/*    </select>*/}
+                                                            {/*</div>*/}
+                                                            {/*<div className="select-drop displaynone" id="records-div" >*/}
+                                                            {/*    <select className="First-menu" id="records">*/}
+                                                            {/*        <option value="Records">Records</option>*/}
+                                                            {/*        <option value="Records">Records</option>*/}
+                                                            {/*        <option value="Scoring">Scoring</option>*/}
+                                                            {/*    </select>*/}
+                                                            {/*</div>*/}
+                                                            {/*<div className="select-drop" id="predicted-div">*/}
+                                                            {/*    <select className="First-menu" id="predicted">*/}
+                                                            {/*        <option value="Predicted Lines">Predicted Lines</option>*/}
+                                                            {/*        <option value="Confidence">Confidence %</option>*/}
+                                                            {/*        <option value="Edge">Edge %</option>*/}
+                                                            {/*    </select>*/}
+                                                            {/*</div>*/}
+                                                            {/*<div className="select-drop" id="my-decision-div">*/}
+                                                            {/*    <select className="First-menu" id="my-decision">*/}
+                                                            {/*        <option value="My Decision Engine">My Decision Engine</option>*/}
+                                                            {/*        <option value="My Decision Engine">My Decision Engine</option>*/}
+                                                            {/*    </select>*/}
+                                                            {/*</div>*/}
+                                                            {/*<div className="right-button-div">*/}
+                                                            {/*    <button>RUN ENGINE</button>*/}
+                                                            {/*</div>*/}
+                                                            {/*<div className="filter-option">*/}
+                                                            {/*    <a href="#"><i className=" fas fa-sliders-h"/></a>*/}
+                                                            {/*</div>*/}
+                                                            <div className="clearfix"/>
+                                                        </div>
                                                     <div className="block-div by-defult" >
                                                         <table>
                                                             <thead>
@@ -434,13 +457,13 @@ export class Dashboard extends Component {
                                                             </thead>
                                                             <tbody>
                                                             <tr>
-                                                                <td data-column="Pred Score">22.0</td>
+                                                                <td data-column="Pred Score"><span className="predScoreText">22.0</span></td>
                                                                 <td data-column="Spread" className="bg-block"><span className="first-text">4.2</span></td>
                                                                 <td data-column="Win" className="bg-block"><span className="first-text"><span className="second-text">37.4%</span></span></td>
                                                                 <td data-column="Total" className="bg-block"><span className="first-text"><span className="second-text">o48.2</span></span></td>
                                                             </tr>
                                                             <tr>
-                                                                <td data-column="Pred Score">22.0</td>
+                                                                <td data-column="Pred Score"><span className="predScoreText">22.0</span></td>
                                                                 <td data-column="Spread" className="bg-block"><span className="first-text">-4.2 </span></td>
                                                                 <td data-column="Win" className="bg-block"><span className="first-text">62.6%</span></td>
                                                                 <td data-column="Total" className="bg-block"><span className="first-text">u48.2</span></td>
