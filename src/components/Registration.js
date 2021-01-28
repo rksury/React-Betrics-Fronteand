@@ -75,57 +75,65 @@ export class Register extends Component {
 
     render() {
         return (
-            <div>
-                <div id="sign-up-container">
+            <div className="bg-login">
+                <div id="sign-up-container" className="form-page">
                     <div id="sign-up-head-wrapper">
                         <h1 id="sign-up-header"/><a> <img id="logo" src={logo} alt="logo"/></a>
-                        <div id="sign-up-sub-header"><h4>Create your account and start winning.</h4></div>
+                        <div id="sign-up-sub-header" className="head-tag"><h5>Create account</h5></div>
                     </div>
                     <div id="sign-up-form" onSubmit={this.registration}>
 
-                    <div className="input-div-in">
-                        <label htmlFor="firstname">First Name</label>
-                        <input value={this.state.first_name} onChange={this.OnChangeHandler} type="text"
-                               id="firstname" name="first_name" placeholder="First Name"/>
-                        <span >{this.state.error_first_name}</span>
-                    </div>
+                        <div className="input-div-in">
+                            <label htmlFor="firstname">First Name</label>
+                            <input value={this.state.first_name} onChange={this.changeFirstNameHandler} type="text"
+                                   id="firstname" name="name" placeholder="First Name"/>
+                            <span>{this.state.error_first_name}</span>
+                        </div>
 
-                    <div className="input-div-in">
-                        <label htmlFor="lastname">Last Name</label>
-                        <input value={this.state.last_name} onChange={this.OnChangeHandler} type="text"
-                               id="lastname" name="last_name" placeholder="Last Name"/>
-                        <span>{this.state.error_last_name}</span>
-                    </div>
+                        <div className="input-div-in">
+                            <label htmlFor="lastname">Last Name</label>
+                            <input value={this.state.last_name} onChange={this.changeLastNameHandler} type="text"
+                                   id="lastname" name="name" placeholder="Last Name"/>
+                            <span>{this.state.error_last_name}</span>
+                        </div>
 
-                    <div className="input-div-in">
-                        <label htmlFor="email">Email address</label>
-                        <input value={this.state.email} onChange={this.OnChangeHandler} type="email" id="email"
-                               name="email" placeholder="Email address"/>
-                        <span >{this.state.error_email}</span>
-                    </div>
+                        <div className="input-div-in">
+                            <label htmlFor="email">Email address</label>
+                            <input value={this.state.email} onChange={this.changeEmailHandler} type="email" id="email"
+                                   name="email" placeholder="Email address"/>
+                            <span>{this.state.error_email}</span>
+                        </div>
 
-                    <div className="input-div-in">
-                        <label htmlFor="password">Password</label>
-                        <input value={this.state.password} onChange={this.OnChangeHandler} type="password"
-                               name="password" placeholder="Password"/>
-                        <span >{this.state.error_password}</span>
-                    </div>
+                        <div className="input-div-in">
+                            <label htmlFor="password">Password</label>
+                            <input value={this.state.password} onChange={this.changePasswordHandler} type="password"
+                                   name="password" placeholder="Password"/>
+                            <span>{this.state.error_password}</span>
+                        </div>
 
-                    <div className="input-div-in">
-                        <label htmlFor="confirm_password">Confirm Password</label>
-                        <input value={this.state.confirm_password}    onChange={this.OnChangeHandler} type="password"
-                               name="confirm_password" placeholder="Password"/>
-                        <span >{this.state.error_confirm_password}</span>
-                    </div>    
+                        <div className="input-div-in">
+                            <label htmlFor="confirm_password">Confirm Password</label>
+                            <input value={this.state.confirm_password} onChange={this.changeConfirmPasswordHandler}
+                                   type="password"
+                                   name="confirm_password" placeholder="Confirm Password"/>
+                            <span>{this.state.error_confirm_password}</span>
+                        </div>
 
                         <div className="text-center">
-                            <button type={"submit"} onClick={this.registration} id="create-account-button">Register
+                            <button type={"submit"} onClick={this.registration} id="create-account-button"
+                                    className="btn-second">Register
                             </button>
                         </div>
+                        <hr className="hr-tag1"/>
+                        <p className="text-muted">Already have an account?</p>
+                        <a onClick={() => this.props.history.push('/login')} className="btn btn-outline-light btn-sm">Sign
+                            in!</a>
+
                     </div>
-                    <p id="terms">Already a user? <a onClick={() => this.props.history.push('/login')} className="footerText">Sign In</a><br/></p>
+
                 </div>
             </div>
+
         );
     };
 

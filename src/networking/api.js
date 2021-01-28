@@ -3,7 +3,7 @@ import axios from 'axios';
 
 
 export default class API {
-    baseUrl = 'http://127.0.0.1:8000/'
+    baseUrl = 'http://192.168.29.106:8000/'
 
     async setToken(token) {
         try {
