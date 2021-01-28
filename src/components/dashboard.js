@@ -10,9 +10,41 @@ export class Dashboard extends Component {
         this.state = {
             book_data: [],
             weeks_data: [],
-            odds_data: []
+            odds_data: [],
+            news : [],
+            selected_week :{
+                id: "fd51f745-b7eb-4c01-8550-d9095aa5407d",
+                title_verbose: "Week 1",
+                sequence: 1,
+                title: "1"
+            },
+            selected_book : {
+                    id: 1,
+                    name: "Unibet",
+                    image: null,
+                    logo: null,
+                    market: 1
+                }
         }
-        // this.weeks_on_click=this.weeks_on_click.bind(this)
+    }
+
+    getNews(){
+        let url = 'news'
+        this.api.GetApi(url)
+            .then((res) => {
+                let response_data = JSON.parse(res.request.response)
+                console.log('+++++----++++', response_data)
+                if (res.status === 200 || 201) {
+                    this.setState({news: response_data})
+                } else if (res.request.status === 401) {
+                    this.props.history.push('/login')
+                } else {
+                    console.log(res)
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }
 
     componentDidMount() {
@@ -23,9 +55,22 @@ export class Dashboard extends Component {
                 console.log('+++++----++++', response_data)
                 if (res.status === 200 || 201) {
                     this.setState({book_data: response_data})
+                    this.setState({selected_book: {
+                            id: 1,
+                            name: "Unibet",
+                            image: null,
+                            logo: null,
+                            market: 1
+                        }})
+
+
                 } else if (res.request.status === 401) {
                     this.props.history.push('/login')
-                } else {
+
+                } else if(res.request.status === 400){
+                    this.setState({error: response_data['error']})
+                }
+                 else {
                     console.log(res)
                 }
             })
@@ -35,6 +80,11 @@ export class Dashboard extends Component {
 
         this.getWeeks()
         this.getUserDetails()
+        this.getNews()
+    }
+
+    OnChangeHandler(event) {
+        this.setState({[event.target.name]: event.target.value});
     }
 
     getUserDetails(){
@@ -46,9 +96,16 @@ export class Dashboard extends Component {
         this.api.GetApi(url)
             .then((res) => {
                 let response_data = JSON.parse(res.request.response)
-                console.log('+++++----++++', response_data)
+
                 if (res.status === 200 || 201) {
                     this.setState({weeks_data: response_data})
+                    this.setState({selected_week:{
+                            id: "fd51f745-b7eb-4c01-8550-d9095aa5407d",
+                            title_verbose: "Week 1",
+                            sequence: 1,
+                            title: "1"
+                        }})
+
                 } else if (res.request.status === 401) {
                     this.props.history.push('/login')
                 } else {
@@ -58,6 +115,12 @@ export class Dashboard extends Component {
             .catch((error) => {
                 console.log(error);
             })
+    }
+
+    logout(){
+        console.log('shchbkbcd')
+        localStorage.clear()
+        this.props.history.push('/login')
     }
 
     updateOdds() {
@@ -92,13 +155,16 @@ export class Dashboard extends Component {
             })
     }
 
-    updateWeek(sequence) {
+    updateWeek(sequence,week_object) {
         this.setState({'week': sequence})
+        this.setState({'selected_week': week_object})
+
         this.updateOdds()
     }
 
-    updateBook(book) {
+    updateBook(book, book_object) {
         this.setState({'book': book})
+        this.setState({'selected_book': book_object})
         this.updateOdds()
     }
 
@@ -147,7 +213,17 @@ export class Dashboard extends Component {
                                             <i className=" fas fa-search"></i>
                                         </li>
                                         <li className="bell-icon"><a href="#"><img src="img/bell.png"></img><span></span></a></li>
-                                        <li className="user"><a href="#" className="img">{this.state.nick_name} <img src="img/user-img.png"></img></a></li>
+                                        <li className="user">
+                                            <a href="#" className="img">{}<img src="img/user-img.png"></img></a>
+                                            <div className="porfile-div">
+                                                <ul>
+                                                    <li><a onClick={() => this.logout()}><i className="fas fa-sign-out-alt"/> Logout</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                        </li>
+
                                     </ul>
                                 </div>
                             </div>
@@ -159,6 +235,8 @@ export class Dashboard extends Component {
                             </div>
                             <div className="right-div">
                                 <a href="https://www.google.co" className="img">{this.state.nick_name}<img src="img/user-img.png"></img></a>
+                                <a href="#" className="logout-profile"><i className="fas fa-sign-out-alt"/></a>
+
                             </div>
                         </div>
                         <div className="search-div mobile-serach-profile">
@@ -224,7 +302,7 @@ export class Dashboard extends Component {
                                                 <a data-toggle="pill" href="#matchup">Matchup</a>
                                             </li>
                                             <li className="arrow">
-                                                <a data-toggle="pill" href="#news" className="arrow-a"><i className="fas fa-angle-double-left"></i></a>
+                                                <a data-toggle="pill" href="#news" className="arrow-a"><i className="fas fa-angle-double-left"></i>News</a>
                                             </li>
                                         </ul>
 
@@ -238,11 +316,11 @@ export class Dashboard extends Component {
                                                         </div>
                                                         <div className="dorpdown-img1 ">
                                                             <div className="dropdown">
-                                                                <button className="btn dropdown-toggle" type="button" data-toggle="dropdown"><img src="img/drop-down-img1.png"></img> Betrics Bucks
+                                                                <button className="btn dropdown-toggle" type="button" data-toggle="dropdown" ><img src="img/drop-down-img1.png"></img> {this.state.selected_book.name}
                                                                     <span className="fas fa-angle-down"></span></button>
                                                                 <ul className="dropdown-menu">
                                                                     {this.state.book_data.map(book => (
-                                                                        <li><a onClick={() => this.updateBook(book.name)}>
+                                                                        <li><a onClick={() => this.updateBook(book.name, book)}>
                                                                             <img src="img/drop-down-img2.png"/>{book.name}
                                                                         </a></li>
                                                                     ))}
@@ -251,11 +329,11 @@ export class Dashboard extends Component {
                                                         </div>
                                                         <div className="dorpdown-img1 dorpdown-img2">
                                                             <div className="dropdown">
-                                                                <button className="btn dropdown-toggle" type="button" data-toggle="dropdown"><img src="img/cal.png"></img> Conference Championships
+                                                                <button className="btn dropdown-toggle" type="button" data-toggle="dropdown"><img src="img/cal.png"></img> {this.state.selected_week.title_verbose}
                                                                     <span className="fas fa-angle-down"></span></button>
                                                                 <ul className="dropdown-menu">
                                                                     {this.state.weeks_data.map(weeks => (
-                                                                        <li><a onClick={() => this.updateWeek(weeks.sequence)}>{weeks.title_verbose}</a> </li>                                                                    ))}
+                                                                        <li><a onClick={() => this.updateWeek(weeks.sequence, weeks)}>{weeks.title_verbose}</a> </li>                                                                    ))}
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -481,102 +559,26 @@ export class Dashboard extends Component {
                                                         <h3>What’s happening</h3>
                                                     </div>
                                                 </div>
-                                                <div className="news-div">
+                                                { this.state.news.map(article =>(
+                                                <a href={article.url} target='_blank'>
+                                                    <div className="news-div">
                                                     <div className="row">
                                                         <div className="col-md-4 img-div">
                                                             <div className="">
-                                                                <img src="img/news-img1.png"></img>
+                                                                <img src={article.image}></img>
                                                             </div>
                                                         </div>
                                                         <div className="col-md-8 content-div">
                                                             <div className="">
-                                                                <h3>How Davnte Adams became an aaron Rodgers... </h3>
-                                                                <p>Whether it's cosmic chemistry or photographic memory,
-                                                                    Davante Adams is in spellbinding sync with Aaron Rodgers as... </p>
+                                                                <h3>{ article.title}</h3>
+                                                                <p>{ article.description}</p>
                                                             </div>
                                                         </div>
                                                     </div>
+
                                                 </div>
-                                                <div className="news-div">
-                                                    <div className="row">
-                                                        <div className="col-md-4 img-div">
-                                                            <div className="">
-                                                                <img src="img/news-img1.png"></img>
-                                                            </div>
-                                                        </div>
-                                                        <div className="col-md-8 content-div">
-                                                            <div className="">
-                                                                <h3>How Davnte Adams became an aaron Rodgers... </h3>
-                                                                <p>Whether it's cosmic chemistry or photographic memory,
-                                                                    Davante Adams is in spellbinding sync with Aaron Rodgers as... </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="news-div">
-                                                    <div className="row">
-                                                        <div className="col-md-4 img-div">
-                                                            <div className="">
-                                                                <img src="img/news-img1.png"></img>
-                                                            </div>
-                                                        </div>
-                                                        <div className="col-md-8 content-div">
-                                                            <div className="">
-                                                                <h3>How Davnte Adams became an aaron Rodgers... </h3>
-                                                                <p>Whether it's cosmic chemistry or photographic memory,
-                                                                    Davante Adams is in spellbinding sync with Aaron Rodgers as... </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="news-div">
-                                                    <div className="row">
-                                                        <div className="col-md-4 img-div">
-                                                            <div className="">
-                                                                <img src="img/news-img1.png"></img>
-                                                            </div>
-                                                        </div>
-                                                        <div className="col-md-8 content-div">
-                                                            <div className="">
-                                                                <h3>How Davnte Adams became an aaron Rodgers... </h3>
-                                                                <p>Whether it's cosmic chemistry or photographic memory,
-                                                                    Davante Adams is in spellbinding sync with Aaron Rodgers as... </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="news-div">
-                                                    <div className="row">
-                                                        <div className="col-md-4 img-div">
-                                                            <div className="">
-                                                                <img src="img/news-img1.png"></img>
-                                                            </div>
-                                                        </div>
-                                                        <div className="col-md-8 content-div">
-                                                            <div className="">
-                                                                <h3>How Davnte Adams became an aaron Rodgers... </h3>
-                                                                <p>Whether it's cosmic chemistry or photographic memory,
-                                                                    Davante Adams is in spellbinding sync with Aaron Rodgers as... </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="news-div">
-                                                    <div className="row">
-                                                        <div className="col-md-4 img-div">
-                                                            <div className="">
-                                                                <img src="img/news-img1.png"></img>
-                                                            </div>
-                                                        </div>
-                                                        <div className="col-md-8 content-div">
-                                                            <div className="">
-                                                                <h3>How Davnte Adams became an aaron Rodgers... </h3>
-                                                                <p>Whether it's cosmic chemistry or photographic memory,
-                                                                    Davante Adams is in spellbinding sync with Aaron Rodgers as... </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                </a>))}
+
                                             </div>
                                         </div>
 
