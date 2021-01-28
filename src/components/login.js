@@ -56,11 +56,11 @@ export class Login extends React.Component {
 
     render() {
         return (
-            <div>
-                <div id="sign-up-container">
+            <div className="bg-login"> 
+                <div id="sign-up-container" className="form-page">
                     <div id="sign-up-head-wrapper">
                         <h1 id="sign-up-header"/><a> <img id="logo" src={logo} alt="logo"/></a>
-                        <div id="sign-up-sub-header"><h5>Where Sports Bettors Make Better Decisions Faster </h5></div>
+                        <div id="sign-up-sub-header" className="head-tag"><h5>Login</h5></div>
                     </div>
                     <div id="sign-up-form" onSubmit={this.login}>
                         <div className="input-div-in">
@@ -77,15 +77,64 @@ export class Login extends React.Component {
                                onChange={this.changePasswordHandler}/>
                         <span >{this.state.error_password}</span>
                         </div>
-                        <input type="checkbox" name="" value="" className="check-box"/>
+                        <div className="check-box">
+                          <div className="left"> 
+                          <input type="checkbox" name="" value="" className="check-box"/>
                         <label htmlFor="Remember" className="check-box-text">Remember Me</label>
+                          </div>
+                          <div className="right">
+                              <a href="">Reset password</a>
+                          </div>
+                        </div>
 
                         <div className="text-center">
                             <button type={"submit"} onClick={this.login} id="create-account-button">Login</button>
                         </div>
+                        <hr className="hr-tag1"></hr>
+                        <p class="text-muted">Login with your social media account.</p>
+                        <ul class="list-inline">
+            <li class="list-inline-item">
+                <a href="#" class="btn btn-floating btn-facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </li>
+            <li class="list-inline-item">
+                <a href="#" class="btn btn-floating btn-twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </li>
+            <li class="list-inline-item">
+                <a href="#" class="btn btn-floating btn-dribbble">
+                    <i class="fab fa-dribbble"></i>
+                </a>
+            </li>
+            <li class="list-inline-item">
+                <a href="#" class="btn btn-floating btn-linkedin">
+                    <i class="	fab fa-linkedin-in"></i>
+                </a>
+            </li>
+            <li class="list-inline-item">
+                <a href="#" class="btn btn-floating btn-google">
+                    <i class="	fab fa-google"></i>
+                </a>
+            </li>
+            <li class="list-inline-item">
+                <a href="#" class="btn btn-floating btn-behance">
+                    <i class="fab fa-behance"></i>
+                </a>
+            </li>
+            <li class="list-inline-item">
+                <a href="#" class="btn btn-floating btn-instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </li>
+        </ul>
+        <hr className="hr-tag2"></hr>
+        <p class="text-muted">Don't have an account?</p>
+        <a onClick={() => this.props.history.push('/register')} class="btn btn-outline-light btn-sm">Register now!</a>
                     </div>
-                    <p id="terms">Not a user?  Sign Up <a onClick= {()=> this.props.history.push('/access-key')} className="">(Beta Access)</a><br/>
-                        <a href="#">Forgot Password.</a></p>
+                   {/* <p id="terms">Not a user?  Sign Up <a onClick= {()=> this.props.history.push('/access-key')} className="">(Beta Access)</a><br/>
+                        <a href="#">Forgot Password.</a></p>*/}
                 </div>
             </div>
         );

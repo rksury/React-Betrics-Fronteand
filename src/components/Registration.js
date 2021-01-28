@@ -95,11 +95,11 @@ export class Register extends Component {
 
     render() {
         return (
-            <div>
-                <div id="sign-up-container">
+            <div className="bg-login">
+                <div id="sign-up-container" className="form-page">
                     <div id="sign-up-head-wrapper">
                         <h1 id="sign-up-header"/><a> <img id="logo" src={logo} alt="logo"/></a>
-                        <div id="sign-up-sub-header"><h4>Create your account and start winning.</h4></div>
+                        <div id="sign-up-sub-header" className="head-tag"><h5>Create account</h5></div>
                     </div>
                     <div id="sign-up-form" onSubmit={this.registration}>
 
@@ -134,16 +134,20 @@ export class Register extends Component {
                     <div className="input-div-in">
                         <label htmlFor="confirm_password">Confirm Password</label>
                         <input value={this.state.confirm_password}    onChange={this.changeConfirmPasswordHandler} type="password"
-                               name="confirm_password" placeholder="Password"/>
+                               name="confirm_password" placeholder="Confirm Password"/>
                         <span >{this.state.error_confirm_password}</span>
                     </div>    
 
                         <div className="text-center">
-                            <button type={"submit"} onClick={this.registration} id="create-account-button">Register
+                            <button type={"submit"} onClick={this.registration} id="create-account-button" className="btn-second">Register
                             </button>
                         </div>
+                        <hr className="hr-tag1"></hr>
+                        <p class="text-muted">Already have an account?</p>
+                     <a onClick={() => this.props.history.push('/login')}  class="btn btn-outline-light btn-sm">Sign in!</a>
+
                     </div>
-                    <p id="terms">Already a user? <a onClick={() => this.props.history.push('/login')} className="footerText">Sign In</a><br/></p>
+                 
                 </div>
             </div>
         );

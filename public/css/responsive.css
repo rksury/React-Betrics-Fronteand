@@ -1,6 +1,7 @@
 
 @media(max-width: 768px) {
 
+
 	.logout-profile{
 
 font-size: 25px;
@@ -197,6 +198,19 @@ top: 5px;
 		height: 3px;
 	}
 	
+	
+}
+
+@media(max-width: 480px){
+	#sign-up-container.form-page {
+   
+    width: 100%;
+  padding: 25px 20px;
+}
+.bg-login {
+    
+    padding: 28px 15px;
+}
 }
 
 @media(min-width: 1024px) {
@@ -352,6 +366,8 @@ float: none;
 }
 
 @media(max-width: 420px){
+
+
 	.main-tab li {
     width: 49%;
     margin-right: 2px;

@@ -1341,3 +1341,240 @@ button:focus {
 .main-header.navbar-default .navbar-nav>li.user.active .porfile-div {
 display: block;
 } 
+
+
+
+#sign-up-container.form-page {
+    background-color: white;
+    box-shadow: 0 3px 10px rgba(62, 85, 120, 0.045);
+    border-radius: 8px;
+    width: 430px;
+    margin: auto;
+    text-align: center;
+    padding: 48px 45px;
+    max-width: initial;
+}
+
+.form-page #logo{
+
+   
+    margin: 18px auto 0;
+    
+   
+}
+
+
+.form-page .head-tag h5{
+font-size: 17px;
+    font-weight: 600;
+    color: black;
+    margin-bottom: 0;
+}
+
+
+.form-page #sign-up-sub-header {
+      margin-top: 25px;
+      margin-bottom: 16px;
+}
+
+.form-page #sign-up-head-wrapper{
+	margin-bottom: 0;
+}
+
+.form-page #sign-up-form input:focus,.form-page #sign-up-form input:active {
+    box-shadow: rgb(82, 168, 236) 0px 0px 6px 0px;
+    border: 1px solid rgb(82, 168, 236);
+    box-shadow: none;
+    border-color: rgba(80, 102, 225, 0.8);
+}
+
+
+.form-page #sign-up-form input {
+   height: 36px;
+   border-radius: 4px;
+   padding: 0px 12px;
+   border-color: #e1e1e1;
+   color: black;
+}
+
+.form-page #sign-up-form label{
+	display: none;
+}
+
+.form-page .input-div-in {
+    margin-bottom: 24px;
+}
+.form-page #sign-up-form .check-box label
+{display: inline-block;color: black;font-size: 14px;margin-left: 4px;}
+
+.form-page #sign-up-form .check-box{
+	text-align: left;
+    padding: 0 5px;
+}
+
+.form-page #sign-up-form .check-box input {
+    height: auto;}
+
+    .form-page #sign-up-form .check-box .left{display: inline-block;}
+
+    .form-page #sign-up-form .check-box .right{float: right;}
+
+    .form-page #sign-up-form .check-box .right a{
+    	color: #666666;
+    	text-decoration: none;
+    	transition: color 0.2s;
+    	font-size: 14px;
+    }
+
+     .form-page #create-account-button{
+     	font-size: 14px;
+     	width: 100%;
+     	font-weight: 600;
+     	align-items: center;
+     	padding: 10px 15px;
+     	line-height: 14px;
+     	color: white !important;
+     	background: #5066e1;
+     	border-color: #5066e1;
+     	cursor: pointer;
+     	box-shadow:0px 2px 8px 0px rgba(80, 102, 225, 0.45);
+     	text-align: center;
+     	height: 37px;
+     	margin-top: 9px;
+     	margin-bottom: 13px;
+    }
+    .form-page #create-account-button:hover{
+    	background: #2540d9;
+    border-color: #2540d9;
+    }
+
+    .form-page hr.hr-tag1{
+    margin: 22px 0 39px;
+}
+.form-page hr.hr-tag2{
+ margin: 39px 0 38px;
+}
+
+.form-page p.text-muted{color: #a7abc3;line-height: 1.5rem;margin-top: 0;margin-bottom: 1rem;font-size: 15px;}
+
+
+.form-page .list-inline {
+    padding-left: 0;
+    list-style: none;
+    margin-top: 20px;
+}
+
+.form-page .list-inline-item:not(:last-child) {
+    margin-right: .5rem;
+}
+
+.form-page ul.list-inline li {
+    margin-bottom: 0.5rem;
+}
+
+.form-page ul:not(.list-unstyled) li {
+    list-style-type: none;
+}
+.form-page .list-inline-item {
+    display: inline-block;
+}
+
+.form-page .btn.btn-floating {
+    font-size: 14px;
+    display: inline-flex;
+    font-weight: 600;
+    align-items: center;
+    line-height: 14px;
+    height: 35px;
+    width: 35px;
+    padding: 0;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.form-page .btn.btn-facebook {
+    color: white !important;
+    background: #3b5998;
+    border-color: #3b5998;
+    cursor: pointer;
+    box-shadow: 0px 2px 8px 0px rgba(59, 89, 152, 0.45);
+}
+
+.form-page .btn.btn-twitter {
+    background: #55acee;
+    border-color: #55acee;
+    cursor: pointer;
+    box-shadow: 0px 2px 8px 0px rgba(85, 172, 238, 0.45);
+    color: white !important;
+}
+.form-page .btn.btn-dribbble {
+    background: #ea4c89;
+    border-color: #ea4c89;
+    cursor: pointer;
+    box-shadow: 0px 2px 8px 0px rgba(234, 76, 137, 0.45);
+    color: white !important;
+}
+.form-page .btn.btn-linkedin {
+    background: #0077b5;
+    border-color: #0077b5;
+    cursor: pointer;
+    box-shadow: 0px 2px 8px 0px rgba(0, 119, 181, 0.45);
+    color: white !important;
+}
+.form-page .btn.btn-google {
+    background: #db4437;
+    border-color: #db4437;
+    cursor: pointer;
+    box-shadow: 0px 2px 8px 0px rgba(219, 68, 55, 0.45);
+    color: white !important;
+}
+.form-page .btn.btn-behance {
+    background: #1769ff;
+    border-color: #1769ff;
+    cursor: pointer;
+    box-shadow: 0px 2px 8px 0px rgba(23, 105, 255, 0.45);
+    color: white !important;
+}
+.form-page .btn.btn-instagram {
+    background: #3f729b;
+    border-color: #3f729b;
+    cursor: pointer;
+    box-shadow: 0px 2px 8px 0px rgba(63, 114, 155, 0.45);
+    color: white !important;
+}
+
+.btn.btn-outline-light {
+    background: none;
+    border-color: #ededed;
+    color: #ededed;
+    box-shadow: 0px 2px 8px 0px rgba(237, 237, 237, 0.45);
+    color: #212529;
+    padding: 5px 10px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 9px;
+}
+
+.bg-login{
+	background-color: #5066e1;
+	position: relative;
+	display: block;
+	padding: 100px 0;
+}
+
+.form-page #create-account-button.btn-second{
+margin-top: 0;
+}
+
+.form-page .btn.btn-outline-light:hover{
+	background: #cecece;
+    border-color: #cecece;
+}
+
+.form-page .input-div-in span{
+	    display: block;
+	    margin: 5px 0 0;
+	    color: red;
+	    text-align: left;
+	    padding: 0 0 0 5px;
+}
