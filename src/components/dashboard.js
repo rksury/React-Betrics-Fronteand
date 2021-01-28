@@ -48,6 +48,14 @@ export class Dashboard extends Component {
     }
 
     componentDidMount() {
+
+        this.getBooks()
+        this.getWeeks()
+        this.getUserDetails()
+        this.getNews()
+    }
+
+    getBooks(){
         let url = 'books'
         this.api.GetApi(url)
             .then((res) => {
@@ -70,21 +78,13 @@ export class Dashboard extends Component {
                 } else if(res.request.status === 400){
                     this.setState({error: response_data['error']})
                 }
-                 else {
+                else {
                     console.log(res)
                 }
             })
             .catch((error) => {
                 console.log(error);
             })
-
-        this.getWeeks()
-        this.getUserDetails()
-        this.getNews()
-    }
-
-    OnChangeHandler(event) {
-        this.setState({[event.target.name]: event.target.value});
     }
 
     getUserDetails(){
@@ -118,7 +118,6 @@ export class Dashboard extends Component {
     }
 
     logout(){
-        console.log('shchbkbcd')
         localStorage.clear()
         this.props.history.push('/login')
     }
