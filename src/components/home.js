@@ -14,6 +14,7 @@ import {ForgetPassword} from "./forgetpassword";
 import {AccessKey} from "./accesskey";
 import {AccessKeyMessage} from "./accesskeyMessage";
 import {Dashboard} from "./dashboard";
+import {BetTracker} from "./bet-tracker";
 
 export class Home extends Component {
     render() {
@@ -32,7 +33,9 @@ export class Home extends Component {
                         <Route path='/access-key' component={AccessKey}/>
                         <Route path='/access-message' component={AccessKeyMessage}/>
                         <Route path='/dashboard' component={Dashboard}/>
+                        <Route path='/bet-tracker' component={BetTracker}/>
                         <Redirect to="/login" />
+                        
                     </Switch>
                 </div>
             </BrowserRouter>

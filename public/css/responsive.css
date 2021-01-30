@@ -1,6 +1,9 @@
 
 @media(max-width: 768px) {
+	.bg-login{
 
+height: 100%;
+}
 
 	.logout-profile{
 
@@ -144,12 +147,13 @@ top: 5px;
 	.content .navbar-default .navbar-toggle {
 		border-color: #ffffff;
 		height: 34px;
+		background: none;
 	}
 	.content .navbar-default .navbar-toggle .icon-bar {
 		background-color: #ffffff;
 	}
 	.content .main-header {
-		padding: 11px 8px 10px;
+		padding: 11px 8px 59px;
 		border-bottom: 1px solid #eee;
 		margin: 0 0 11px;
 		z-index: 0;
@@ -197,7 +201,6 @@ top: 5px;
 		top: -4px;
 		height: 3px;
 	}
-	
 	
 }
 
@@ -254,6 +257,20 @@ content: none;
 	.navbar-collapse.collapse.left-sidebar {
     width: 17%;
     padding: 0;
+    transition: 0.5s all;
+    left: 0;
+}
+
+.siderbar-menu-btn{
+display: inline-block;	
+}
+.active-side-bar-menu .left-sidebar {
+	left: -277px!important;
+}
+.active-side-bar-menu .content {
+    margin-left: 0;
+    background: rgba(20, 23, 31, 1);
+    width: 100%;
 }
 }
 
@@ -366,8 +383,6 @@ float: none;
 }
 
 @media(max-width: 420px){
-
-
 	.main-tab li {
     width: 49%;
     margin-right: 2px;
@@ -419,10 +434,13 @@ float: none;
 	height: 35px;
 }
 .table-resposiv tr td,.table-resposiv tr:first-child td{
-	    padding: 7px 0 0 107px!important;
-    height: 42px;
+	    padding: 7px 0 0 127px!important;
+	    height: 42px;
 }
-
+.table-resposiv.all-track tr td, .table-resposiv.all-track tr:first-child td {
+    padding: 7px 0 0 127px!important;
+    
+}
 .block-div table tr td.bg-block span.first-text {
    
     height: 36px;
@@ -474,7 +492,7 @@ float: none;
 }
 .inside-tab .main-tab li.matchup-tab {
    
-width: 100%;
+    width: 58.5%;
 }
 .coming-soon-div .both-div .img-div.third-img-div{
 width: 40px;

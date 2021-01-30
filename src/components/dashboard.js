@@ -1,83 +1,18 @@
 import React,{Component} from "react";
-
-
+import Header from "./header";
+import Sidebar from "./sidebar";
 export class Dashboard extends Component {
     render() {
         return (
-            <div className="container-fluid">
+            <div className="container-fluid main-bg-dashboard">
       <div className="row">
        
-         <div className="col-md-3 left-sidebar collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <div className="row logo-div">
-               <img src="img/logo-img.png"></img>
-            </div>
-            <div className="menu-list">
-               <ul>
-                  <li className="active"><a href="#"><i className="fas fa-chart-pie"></i> My Betrics</a></li>
-                  <li><a href="#"><i className="fas fa-ticket-alt"></i> My Betrics</a></li>
-                  <li><a href="#"><i className="  fas fa-book"></i> My Sportsbooks</a></li>
-                  <li><a href="#"><i className="fas fa-users"></i> Betrics University</a></li>
-                  <li><a href="#"><i className="fas fa-lightbulb"></i> Ideas</a></li>
-                  <li><a href="#"><i className="fas fa-user-alt"></i> Contact</a></li>
-                  <li className="sprate"></li>
-                  <li><a href="#"><i className="fas fa-cog"></i> Settings</a></li>
-                  <li><a href="#"><i className="fas fa-award"></i> Subscription</a></li>
-               </ul>
-            </div>
-         </div>
+         <Sidebar/>
         
          <div className="col-md-10 content">
           
-            <nav className="navbar navbar-default main-header">
-               <div className="container-fluid">
-                  <div className="navbar-header">
-                     <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                     <span className="sr-only">Toggle navigation</span>
-                     <span className="icon-bar"></span>
-                     <span className="icon-bar"></span>
-                     <span className="icon-bar"></span>
-                     </button>
-                     <a className="navbar-brand" href="#">DASHBOARD</a>
-                  </div>
-                  <div className="collapse navbar-collapse menu-hide-mobile navbar-tp-lft" >
-                     <ul className="nav navbar-nav navbar-right">
-                        <li className="search-div">
-                           <input type="" name="" placeholder=""></input>
-                           <i className=" fas fa-search"></i>
-                        </li>
-                        <li className="bell-icon"><a href="#"><img src="img/bell.png"></img><span></span></a></li>
-                        <li className="user">
-                           <a href="#" className="img">Jones Ferdinand <img src="img/user-img.png"></img></a>
-                        
-
-                        <div class="porfile-div">
-                   	    <ul>
-                   		    <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-                   	    </ul>
-                        </div>  
-                        
-                        </li>
-
-                     </ul>
-                  </div>
-               </div>
-            </nav>
-           
-            <div className="mobile-view-profile">
-               <div className="left-div">
-                  <a href="https://www.google.com"><img src="img/bell.png"></img><span></span></a>
-               </div>
-               <div className="right-div">
-                  <a href="https://www.google.co" className="img">Jones Ferdinand <img src="img/user-img.png"></img></a>
-                  <a href="#" class="logout-profile"><i class="fas fa-sign-out-alt"></i></a>
-               </div>
-            </div>
-            <div className="search-div mobile-serach-profile">
-               <input type="" name="" placeholder="Search"></input>
-               <i className="glyphicon glyphicon-search"></i>
-            </div>
-            <div className="clearfix"></div>
-         
+          <Header/>
+          
             <div className="main-content">
                <div className=" main-container container-fluid">
                
